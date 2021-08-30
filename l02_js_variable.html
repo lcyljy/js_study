@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>js variable</title>
+</head>
+
+<body>
+  <main>
+    <h1>자바스크립트의 변수(variable)</h1>
+    <p>모든 프로그래밍 언어는 데이터를 참조하기 위해 변수를 사용한다.
+      이 때 참조하는 데이터가 변할 수 있어서 변수다.(let a="안녕" ->a = 200)
+    </p>
+    <article>
+      <h2>자바스크립트의 변수와 상수</h2>
+      <ul>
+        <li>var : 자바스크립트 태초의 변수(variable)로 함수지향언어의 특정을 가진 블럭이 모호한 상태다.(사용하지 않음!!)</li>
+        <li>let : es6에 탄생한 변수로 클래스 추가와 함께 블럭의 구분을 명확하게 한다.(var 대신 사용)</li>
+        <li>const : 변수가 아닌 상수로 선언과 동시에 데이터를 참조해야하고, 참조된 데이터를 변경할 수 없다. 참조하는 데이터의 상태를 변경할 수 있다.</li>
+      </ul>
+      <script>
+
+        // const COLOR_RED; // 오류;
+        const PI=3.14; // 바뀌지 않는 값을 선언할 때 사용
+        const COLOR_RED="255,0,0"; //선언과 동시에 입력
+        const COLOR_LIST=["(255,0,0)","(0,255,0)","(0,0,255)"];
+        // COLOR_LIST=["255,0,0","(0,255,0)"]; // 오류
+        COLOR_LIST[0]="(200,0,0)"; // 가능
+        var a=10; //a.1
+        var a=15; //a.2 오류 아님
+        let b=20; //b.1
+        // let b=25;(오류)
+        function test(){
+          var a= 30; //a.3 ->1,2,3은 같은 a
+          let b= 40; //b.2 -> 1,2는 다르다. 각 블럭({}) b는 유일하고 다시 선언될 수 없다.
+        }
+      </script>
+    </article>
+    <article>
+      <h2>변수의 식별자(이름)</h2>
+      <p>프로그래밍에서 식별자 즉 이름 짓기는 매우 중요하다. 대체로 유지 보수에 용이하기 위해 약속된 방식이지만 이름이 오류를 만들 수 있어 오류가 있는 코드를 배포하는 자바스크립트 특성상 이름 짓기가 더 중요하다.
+      예) let var= 10; , let function="test"; // 예약어 오류 function a(){let a; } // 권장하지 않음</p>
+    </article>
+  </main>
+</body>
+
+</html>
