@@ -1,169 +1,322 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>javaScript Number Type</title>
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>javaScript Number Type</title>
-</head>
-
-<body>
-  <h1>숫자와 부동 소수점을 포함하는 Number type</h1>
-  <p>number는 64비트의 부동 소수점인 숫자를 저장하는 기본 데이터 타입</p>
-  <ul>
-    <li>number가 표현할 수 있는 최대 수(MAX_SAFE_INTEGER)
-      <script>
-        document.write(Number.MAX_SAFE_INTEGER);
-      </script>
-    </li>
-    <li>number가 표현할 수 있는 최소 수(MIN_SAFE_INTEGER)
-      <script>
-        document.write(Number.MIN_SAFE_INTEGER);
-      </script>
-    </li>
-    <li>
-      자바스크립트가 표현할 수 있는 가장 큰 수:
-      <script>
-        document.write(Number.MAX_VALUE);
-      </script>
-    </li>
-    <li>
-      자바스크립트가 표현할 수 있는 가장 낮은 수 :
-      <script>
-        document.write(Number.MIN_VALUE);
-      </script>
-    </li>
-    <li>Number. 는 정수와 소수를 표현한 데이터 타입을 자바스크립트가 브라우저 동작시 생성한 객체</li>
-    <li>Number는 총 63bit를 저장하고 분수는 0~51, 지수는 52~62, 부호(.)가 63에 저장된다. </li>
-    <li>
-      <script>
-        document.write(0.2 + 0.1);
-      </script>
-    </li>
-    <li>9999999999999888888888888888888899999=
-      <script>
-        document.write(9999999999999888888888888888888899999);
-      </script>
-    </li>
-    <li>let eNum=567e8 :
-      <script>
-        document.write(567e8);
-      </script>
-    </li>
-    <li>let eNum=567e-8 :
-      <script>
-        document.write(567e-8);
-      </script>
-    </li>
-  </ul>
-  <article>
-    <h2>Number의 연산과 자동형 변환</h2>
-    <p>숫자는 연산을 하기 위해 존재하고 자바스크립트의 숫자는 숫자가 아닌 것도 연산하기 위해 형변환을 시도한다.("10" -> 10)</p>
-    <ul>
-      <li>10+20 :<script>document.write(10+20)</script></li>
-      <li>10+"20" : <script>document.write(10+"20")</script></li>
-      <li>"10"+20 : <script>document.write("10"+20)</script></li>
-      <li>"10"+"20" : <script>document.write("10"+"20")</script></li>
-      <li>"A" +10+20 : <script>document.write("A"+10+20)</script></li>
-      <li>10+20+"A" : <script>document.write(10+20+"A")</script></li>
-      <li>1+false : <script>document.write(1+false)</script></li>
-      <li>1+true : <script>document.write(1+true)</script></li>
-      <li>1+null : <script>document.write(1+null)</script></li>
-      <li>1+undefined : <script>document.write(1+undefined)</script></li>
-      <li>1+NaN : <script>document.write(1+NaN)</script></li>
-    </ul>
-    <hr>
-    <p>+연산을 제외한 나머지 연산은 문자열이 나올 시 자동 형 변환을 시도한다.
-      <br>만약 형 변환되지 않으면 숫자가 아니라는 뜻의 NaN가 된다.
-      <br>true는 1로, false와 null은 0으로 변환되고 NaN과 undefined는 NaN이 된다.
-    </p>
-    <ul>
-      <li>10*20 :<script>document.write(10*20)</script></li>
-      <li>10*"20" : <script>document.write(10*"20")</script></li>
-      <li>"10"*20 : <script>document.write("10"*20)</script></li>
-      <li>"10"*"20" : <script>document.write("10"*"20")</script></li>
-      <li>"A"*10*20 : <script>document.write("A"*10*20)</script></li>
-      <li>10*20*"A" : <script>document.write(10*20*"A")</script></li>
-      <li>1*false : <script>document.write(1*false)</script></li>
-      <li>1*true : <script>document.write(1*true)</script></li>
-      <li>1*null : <script>document.write(1*null)</script></li>
-      <li>1*undefined : <script>document.write(1*undefined)</script></li>
-      <li>1*NaN : <script>document.write(1*NaN)</script></li>
-    </ul>
-
-  </article>
-  <article>
-    <h2>NaN Not a Number</h2>
-    <p>숫자가 될 수 없는 것을 나타내는 NaN</p>
-    <ul>
-      <li>Number("100"):data를 숫자로 형 변환</li>
-      <li>Number("안녕"):
-        <script>
-          document.write(Number("안녕"));
-        </script>
-      </li>
-      <li>Number(null):
-        <script>
-          document.write(Number(null));
-        </script>
-      </li>
-      <li>Number(undefined):
-        <script>
-          document.write(Number(undefined));
-        </script>
-      </li>
-      <li>Number(true):
-        <script>
-          document.write(Number(true));
-        </script>
-      </li>
-      <li>Number(false):
-        <script>
-          document.write(Number(false));
-        </script>
-      </li>
-      <li>isNaN("100") :
-        <script>
-          document.write(isNaN("100"));
-        </script>
-      </li>
-      <li>isNaN("백") :
-        <script>
-          document.write(isNaN("백"));
-        </script>
-      </li>
-      <li>Boolean(NaN) :
-        <script>
-          document.write(Boolean(NaN));
-        </script>
-      </li>
-    </ul>
-  </article>
-  <article>
-    <h2>입력 요소에서 입력받은 value가 숫자인지 검사하기</h2>
+  <body>
+    <h1>숫자와 부동 소수점을 포함하는 Number type</h1>
+    <p>number는 64비트의 부동 소수점인 숫자를 저장하는 기본 데이터 타입</p>
     <ul>
       <li>
-        <!-- 2021-(age-1) -->
-        <input type="text" id="age" name="age" value="" placeholder="나이를 입력하세요" onchange="birthdayAlert(event)"><span id="ageTest" style="color:red">ㅇㅇ</span>
+        number가 표현할 수 있는 최대 수(MAX_SAFE_INTEGER)
         <script>
-        function birthdayAlert(e){
-          // 1~120까지의 숫자만 받고(다른 수가 넘어올 경우 1~120 숫자만 입력하세요.)
-          // 숫자가 될수 없는 문자열이 넘어올 경우 다시 입력하세요(숫자만)
-          alert("당신이 태어난 해는 :" + (2021-e.target.value+1)+"입니다.");
-          /* e.target.value */
-          // Date 클래스에서 브라우저가 실행중인 해 받아오기
-
-          if(e.target.value==NaN) {document.getElementById(ageTest).innerText = "숫자만 입력해주세요" // 주소설정을 못하겠어... 입력된 값은 어디에 저장되는가...? 그걸 어떻게 가져오는건데?
-          let year= new Date().getFullYear();
-        }
-        // console.log(document.getElementById(ageTest));
+          document.write(Number.MAX_SAFE_INTEGER);
         </script>
       </li>
       <li>
-        <input type="text" name="age" value="" placeholder="나이를 입력하세요" onkeydown="alert(event.keyCode)">
-        <!-- onkeydown으로 입력 받은 값이 숫자가 아니면 입력할 수 없게 해라 -->
+        number가 표현할 수 있는 최소 수(MIN_SAFE_INTEGER)
+        <script>
+          document.write(Number.MIN_SAFE_INTEGER);
+        </script>
+      </li>
+      <li>
+        자바스크립트가 표현할 수 있는 가장 큰 수:
+        <script>
+          document.write(Number.MAX_VALUE);
+        </script>
+      </li>
+      <li>
+        자바스크립트가 표현할 수 있는 가장 낮은 수 :
+        <script>
+          document.write(Number.MIN_VALUE);
+        </script>
+      </li>
+      <li>
+        Number. 는 정수와 소수를 표현한 데이터 타입을 자바스크립트가 브라우저
+        동작시 생성한 객체
+      </li>
+      <li>
+        Number는 총 63bit를 저장하고 분수는 0~51, 지수는 52~62, 부호(.)가 63에
+        저장된다.
+      </li>
+      <li>
+        <script>
+          document.write(0.2 + 0.1);
+        </script>
+      </li>
+      <li>
+        9999999999999888888888888888888899999=
+        <script>
+          document.write(9999999999999888888888888888888899999);
+        </script>
+      </li>
+      <li>
+        let eNum=567e8 :
+        <script>
+          document.write(567e8);
+        </script>
+      </li>
+      <li>
+        let eNum=567e-8 :
+        <script>
+          document.write(567e-8);
+        </script>
       </li>
     </ul>
-  </article>
+    <article>
+      <h2>Number의 연산과 자동형 변환</h2>
+      <p>
+        숫자는 연산을 하기 위해 존재하고 자바스크립트의 숫자는 숫자가 아닌 것도
+        연산하기 위해 형변환을 시도한다.("10" -> 10)
+      </p>
+      <ul>
+        <li>
+          10+20 :
+          <script>
+            document.write(10 + 20);
+          </script>
+        </li>
+        <li>
+          10+"20" :
+          <script>
+            document.write(10 + "20");
+          </script>
+        </li>
+        <li>
+          "10"+20 :
+          <script>
+            document.write("10" + 20);
+          </script>
+        </li>
+        <li>
+          "10"+"20" :
+          <script>
+            document.write("10" + "20");
+          </script>
+        </li>
+        <li>
+          "A" +10+20 :
+          <script>
+            document.write("A" + 10 + 20);
+          </script>
+        </li>
+        <li>
+          10+20+"A" :
+          <script>
+            document.write(10 + 20 + "A");
+          </script>
+        </li>
+        <li>
+          1+false :
+          <script>
+            document.write(1 + false);
+          </script>
+        </li>
+        <li>
+          1+true :
+          <script>
+            document.write(1 + true);
+          </script>
+        </li>
+        <li>
+          1+null :
+          <script>
+            document.write(1 + null);
+          </script>
+        </li>
+        <li>
+          1+undefined :
+          <script>
+            document.write(1 + undefined);
+          </script>
+        </li>
+        <li>
+          1+NaN :
+          <script>
+            document.write(1 + NaN);
+          </script>
+        </li>
+      </ul>
+      <hr />
+      <p>
+        +연산을 제외한 나머지 연산은 문자열이 나올 시 자동 형 변환을 시도한다.
+        <br />만약 형 변환되지 않으면 숫자가 아니라는 뜻의 NaN가 된다.
+        <br />true는 1로, false와 null은 0으로 변환되고 NaN과 undefined는 NaN이
+        된다.
+      </p>
+      <ul>
+        <li>
+          10*20 :
+          <script>
+            document.write(10 * 20);
+          </script>
+        </li>
+        <li>
+          10*"20" :
+          <script>
+            document.write(10 * "20");
+          </script>
+        </li>
+        <li>
+          "10"*20 :
+          <script>
+            document.write("10" * 20);
+          </script>
+        </li>
+        <li>
+          "10"*"20" :
+          <script>
+            document.write("10" * "20");
+          </script>
+        </li>
+        <li>
+          "A"*10*20 :
+          <script>
+            document.write("A" * 10 * 20);
+          </script>
+        </li>
+        <li>
+          10*20*"A" :
+          <script>
+            document.write(10 * 20 * "A");
+          </script>
+        </li>
+        <li>
+          1*false :
+          <script>
+            document.write(1 * false);
+          </script>
+        </li>
+        <li>
+          1*true :
+          <script>
+            document.write(1 * true);
+          </script>
+        </li>
+        <li>
+          1*null :
+          <script>
+            document.write(1 * null);
+          </script>
+        </li>
+        <li>
+          1*undefined :
+          <script>
+            document.write(1 * undefined);
+          </script>
+        </li>
+        <li>
+          1*NaN :
+          <script>
+            document.write(1 * NaN);
+          </script>
+        </li>
+      </ul>
+    </article>
+    <article>
+      <h2>NaN Not a Number</h2>
+      <p>숫자가 될 수 없는 것을 나타내는 NaN</p>
+      <ul>
+        <li>Number("100"):data를 숫자로 형 변환</li>
+        <li>
+          Number("안녕"):
+          <script>
+            document.write(Number("안녕"));
+          </script>
+        </li>
+        <li>
+          Number(null):
+          <script>
+            document.write(Number(null));
+          </script>
+        </li>
+        <li>
+          Number(undefined):
+          <script>
+            document.write(Number(undefined));
+          </script>
+        </li>
+        <li>
+          Number(true):
+          <script>
+            document.write(Number(true));
+          </script>
+        </li>
+        <li>
+          Number(false):
+          <script>
+            document.write(Number(false));
+          </script>
+        </li>
+        <li>
+          isNaN("100") :
+          <script>
+            document.write(isNaN("100"));
+          </script>
+        </li>
+        <li>
+          isNaN("백") :
+          <script>
+            document.write(isNaN("백"));
+          </script>
+        </li>
+        <li>
+          Boolean(NaN) :
+          <script>
+            document.write(Boolean(NaN));
+          </script>
+        </li>
+      </ul>
+    </article>
+    <article>
+      <h2>입력 요소에서 입력받은 value가 숫자인지 검사하기</h2>
+      <ul>
+        <li>
+          <!-- 2021-(age-1) -->
+          <input
+            type="text"
+            id="age"
+            name="age"
+            value=""
+            placeholder="나이를 입력하세요"
+            onchange="birthdayAlert(event)"
+          /><span id="ageTest" style="color: red">ㅇㅇ</span>
+          <script>
+            function birthdayAlert(e) {
+              // 1~120까지의 숫자만 받고(다른 수가 넘어올 경우 1~120 숫자만 입력하세요.)
+              // 숫자가 될수 없는 문자열이 넘어올 경우 다시 입력하세요(숫자만)
+              alert(
+                "당신이 태어난 해는 :" + (2021 - e.target.value + 1) + "입니다."
+              );
+              /* e.target.value */
+              // Date 클래스에서 브라우저가 실행중인 해 받아오기
+              // console.log(typeof e.target.value);
+              // console.log(isNaN(e.target.value));
+
+              if (isNaN(e.target.value)) {
+                document.getElementById("ageTest").innerText =
+                  "숫자만 입력해주세요"; // 주소설정을 못하겠어... 입력된 값은 어디에 저장되는가...? 그걸 어떻게 가져오는건데?
+                // console.log("dfsadf");
+                // let year= new Date().getFullYear();
+                // console.log(document.getElementById("ageTest"));
+              }
+            }
+            // console.log(document.getElementById(ageTest));
+          </script>
+        </li>
+        <li>
+          <input
+            type="text"
+            name="age"
+            value=""
+            placeholder="나이를 입력하세요"
+            onkeydown="alert(event.keyCode)"
+          />
+          <!-- onkeydown으로 입력 받은 값이 숫자가 아니면 입력할 수 없게 해라 -->
+        </li>
+      </ul>
+    </article>
   </body>
-
-  </html>
+</html>
