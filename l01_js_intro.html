@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>js intro</title>
+</head>
+
+<body onload="alert('안녕 자바스크립트야!')">
+  <main>
+    <h1>JavaScript js 소개</h1>
+    <p>자바스크립트는 웹 브라우저 상에서 ui를 동적으로 보여주기 위하여 개발되었으나 배우기 쉽고 개발 속도가 빨라서 서버나(Node.js) 모바일 앱(react-native, NativeScript)등 프로그래밍의 여러 분야에서 사용되고 있다.<br>
+      또한 매해 새 버전을 출시해 오류를 수정하거나 객체 지향적 특성을 발전시키고 있다.</p>
+    <article>
+      <h2>브라우저 언어인 자바스크립트의 특징</h2>
+      <ul>
+        <li>자바스크립트는 객체 기반의 스크립트 언어로 브라우저에서 사용된다.
+          (*스크립트 언어 : 응용 프로그램을 동작시키는 언어의 통칭)</li>
+        <li>자바스크립트는 인터프린터 언어로 컴파일 되지 않고 바로 해석된다.
+          (*컴파일: 작성한 코드를 기계어로 해석하는 행위) 때문에 동적으로 개발할 수 있지만 실행 속도가 느리고(기계어에 비해) 오류가 있는 페이지를 배포할 수 있다.</li>
+        <li>자바스크립트는 함수형 프로그래밍 언어였으나 es6 이후로 class와 변수를 추가해 객체지향 언어의 특징을 가진다.</li>
+        <li>자바스크립트는 주로 다루는 객체가 window.document로 DOMTree로 구성된 document의 특정 Element를 찾는 것에서 부터 시작된다. 예) document로. getElementById()</li>
+        <li>자바스크립트는 html 문서가 모두 브라우저에 출력되고 마지막에 실행된다.</li>
+      </ul>
+    </article>
+    <article>
+      <h2>자바스크립트가 브라우저에서 할 수 있는 일</h2>
+      <ul>
+        <li>html 문서의 내용과 속성을 추가 수정 삭제가 가능하다.
+          <script>
+            document.write("&nbsp;<a href='#'>추가된 내용</a>")
+          </script>
+        </li>
+        <li>html 문서의 스타일을 변경할 수 있다.
+<button type="button" onclick="this.style.background='rgba(230,30,130,0.7)'">스타일 변경</button>
+        </li>
+        <li onmouseover="this.style.color='blue'">
+          html 요소에서 발생하는 외부기기의 입력을 이벤트로 받아 ui를 동적으로 바꾼다.
+        </li>
+        <li>
+          브라우저의 (BOM) 정보를 알 수 있거나 입력 및 수정을 할 수 있다.
+          <script>
+            document.write("현재 주소:"+window.location.href)
+          </script>
+        </li>
+      </ul>
+    </article>
+  </main>
+</body>
+
+</html>
