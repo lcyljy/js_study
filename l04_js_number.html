@@ -290,6 +290,7 @@
             } else {
               if (e.target.value >= 1 && e.target.value <= 120) {
                 alert("당신이 태어난 해는 :" + (2021 - e.target.value + 1) + "입니다.");
+                e.target.value=e.target.value.trim(); // 공백제거
               } else {
                 document.getElementById("ageTest").innerText =
                 "1~120의 숫자만 입력해주세요";
@@ -310,12 +311,27 @@
 
           }
           // console.log(document.getElementById(ageTest));
+
         </script>
       </li>
       <li>
-        <input type="text" name="age" value="" placeholder="나이를 입력하세요" onkeydown="alert(event.keyCode)" />
+        <input type="text" name="age" value="" placeholder="나이를 입력하세요" onkeydown="onlyNum(event,this)" /><span id="ageTest2"></span>
         <!-- onkeydown으로 입력 받은 값이 숫자가 아니면 입력할 수 없게 해라 -->
+
       </li>
+      <script>
+        function onlyNum(e,thisElement){
+          // console.log(e.keyCode); // 0 keycode:48 9 keyCode:57
+          console.log(e.target.value);
+          if(e.keyCode>=48 && e.keyCode<=57){
+             birthdayAlert(e);
+
+              }else  {
+              console.log("숫자만 입력해주세요");
+            }
+          }
+        }
+      </script>
     </ul>
   </article>
 </body>

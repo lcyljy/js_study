@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>js number and operators</title>
+  <style>
+    table,
+    table td {
+      border-collapse: collapse;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>자바스크립트의 숫자와 연산</h1>
+  <h2>산술연산자</h2>
+  <!-- table>(thead>tr>th{operator(연산)}+th{이름}+th{설명}+th{예시})+tbody>tr*6>td*4 -->
+  <table>
+    <thead>
+      <tr>
+        <th>operator(연산)</th>
+        <th>이름</th>
+        <th>설명</th>
+        <th>예시</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>+</td>
+        <td>더하기</td>
+        <td>두 수를 더한다</td>
+        <td>6.8+3.2</td>
+      </tr>
+      <tr>
+        <td>-</td>
+        <td>빼기</td>
+        <td>두 수를 왼쪽 기준으로 뺀다</td>
+        <td>10.5-30</td>
+      </tr>
+      <tr>
+        <td>*</td>
+        <td>곱하기</td>
+        <td>두 수를 곱한다</td>
+        <td>10.3*20</td>
+      </tr>
+      <tr>
+        <td>/</td>
+        <td>분할</td>
+        <td>왼쪽의 수를 오른쪽의 수로 나누기</td>
+        <td>20/3</td>
+      </tr>
+      <tr>
+        <td>%</td>
+        <td>나머지</td>
+        <td>나누고 남은 나머지 값</td>
+        <td>10%3=<script>
+            document.write(10 % 3);
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td>**</td>
+        <td>거듭제곱</td>
+        <td>왼쪽의 수를 오른쪽의 수의 횟수만큼 곱한다</td>
+        <td>2**10 =<script>
+            document.write(2 ** 10);
+          </script>
+          <br>Math.pow(2,5)=<script>
+            document.write(Math.pow(2, 5));
+          </script>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <h2>할당 연산자와 증가 및 감소 연산자</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>operator(연산)</th>
+        <th>이름</th>
+        <th>설명</th>
+        <th>예시</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>a+=b</td>
+        <td>추가할당</td>
+        <td>a=a+b : 자기 자신 a에 b를 더한다</td>
+        <td>x+=10 (x=x+10)</td>
+      </tr>
+      <tr>
+        <td>a-=b</td>
+        <td>빼기할당</td>
+        <td>a=a-b : 자기 자신 a에 b를 뺀다</td>
+        <td>x-=10 (x= x-10)</td>
+      </tr>
+      <tr>
+        <td>a*=b</td>
+        <td>곱셈할당</td>
+        <td>a=a*b : 자기 자신 a에 b를 곱한다</td>
+        <td>x*=3 (x=x*3)</td>
+      </tr>
+      <tr>
+        <td>a/=b</td>
+        <td>분할할당</td>
+        <td>a=a/b : 자기 자신 a에 b를 나눈다</td>
+        <td>x/=7 (x=x/7)</td>
+      </tr>
+      <tr>
+        <td>++a; or --a;</td>
+        <td>증가 및 감소 연산자</td>
+        <td>a=a+1; or a=a-1; 숫자 앞에 증가 및 감소연산자가 오면 연산을 먼저하고 다른 실행을 옮긴다</td>
+        <td>a(++i); : i를 1증가시키고 a()를 실행한다</td>
+      </tr>
+      <tr>
+        <td>a++; or a--;</td>
+        <td>증가 및 감소 연산자</td>
+        <td>a=a+1; or a=a-1; 숫자 뒤에 증가 및 감소연산자가 오면 실행을 먼저하고 연산을 해라</td>
+        <td>a(i++); : a()를 실행시키고 i를 1증가시킨다</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <h2>비교연산자</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>operator(연산)</th>
+        <th>이름</th>
+        <th>설명</th>
+        <th>예시</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>==</td>
+        <td>등호</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>!=</td>
+        <td>비 평등비교</td>
+        <td>a와 b의 값이 같지 않은지 비교</td>
+        <td>10! = (6+4) : <script>
+            document.write(10 != (6 + 4))
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td>===</td>
+        <td>엄격한 평등</td>
+        <td>a와 b가 (타입까지) 완전히 동일한지 바교</td>
+        <td> 10===new Number(10) :
+          <br>
+          <script>
+            document.write(10 === new Number(10))
+          </script>
+          <br> 10=== "10" <script>
+            document.write(10 === "10")
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td>!==</td>
+        <td>엄격한 비동등</td>
+        <td>a와 b가 (타입까지) 완전히 동일하지 않은지 바교</td>
+        <td> 10!==new Number(10) :
+          <br>
+          <script>
+            document.write(10 !== new Number(10))
+          </script>
+          <br> 10!== "10" <script>
+            document.write(10 !== "10")
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td>a&lt;b</td>
+        <td>미만(작다)</td>
+        <td>왼쪽 값 a가 오른쪽 값 b보다 작은지 확인</td>
+        <td>5&lt;3 : false</td>
+      </tr>
+      <tr>
+        <td>a&gt;b</td>
+        <td>초과(크다)</td>
+        <td>왼쪽 값 a가 오른쪽 값 b보다 큰지 확인</td>
+        <td>5&gt;3 : true</td>
+      </tr>
+      <tr>
+        <td>a&lt;=b</td>
+        <td>이하</td>
+        <td>왼쪽 값 a가 오른쪽 값 b보다 같거나 작은지 확인</td>
+        <td>5&lt;=3 : false</td>
+      </tr>
+      <tr>
+        <td>a&gt;=b</td>
+        <td>이상</td>
+        <td>왼쪽 값 a가 오른쪽 값 b보다 같거나 큰지 확인</td>
+        <td>5&gt;=3 : true</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <h2>내장 객체 Math의 전역변수와 함수를 알아보자(Math.PI :<script>
+      document.write(Math.PI)
+    </script>)</h2>
+  <p>전역변수 E,PI,POG2E,LOG10E,SQRT2,SQRT1_2,LN2... 수학에서 사용하는 상수가 존재</p>
+  <h3>Math.method()</h3>
+  <!-- table>(thead>tr>th*3)+tbody>(tr>td*3)*10 -->
+  <table>
+    <thead>
+      <tr>
+        <th>method</th>
+        <th>설명</th>
+        <th>예시</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Math.abs()</td>
+        <td>절대값</td>
+        <td>Math.abs(10): <script>
+            document.write(Math.abs(10))
+          </script>
+          <br>Math.abs(-10): <script>
+            document.write(Math.abs(-10))
+          </script>
+          <br>Math.abs(-10.23): <script>
+            document.write(Math.abs(-10.23))
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td>pow(a,b)</td>
+        <td>a의 지수 b(a를 b번 거듭제곱)</td>
+        <td>Math.pow(2,8) : <script>
+            document.write(Math.pow(2, 8))
+          </script>
+          <br>2**8 : <script>
+            document.write(2 ** 8)
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td>Math.max(args..)</td>
+        <td>제공된 숫자들 중 최대값을 반환</td>
+        <td>Math.max(10,2,6,7,8,20,17,13):
+          <br>
+          <script>
+            document.write(Math.max(10, 2, 6, 7, 8, 20, 17, 13))
+          </script>
+          <br>Math.max([10,8,20]): <script>
+            document.write(Math.max([10, 8, 20]))
+          </script>
+          <br>Math.max(...[10,8,20]):
+          <script>
+            document.write(Math.max(...[10, 8, 20]))
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td>Math.Min(arg..)</td>
+        <td>제공된 숫자들 중 최소값을 반환</td>
+        <td>Math.min(10,2,6,7,8,20,17,13):
+          <br>
+          <script>
+            document.write(Math.min(10, 2, 6, 7, 8, 20, 17, 13))
+          </script>
+          <br>Math.min([10,8,20]): <script>
+            document.write(Math.min([10, 8, -20, -17, 13]))
+          </script>
+          <br>Math.min(...[10,8,20]):
+          <script>
+            document.write(Math.min(...[10, 8, -20, -17, 13]))
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td>Math.random()</td>
+        <td>0~1 사이의 난수를 얻는다.</td>
+        <td>Main.radom(): <script>
+            document.write(Math.random());
+          </script>
+          <br>Math.round(Main.radom()*10): 0~10사이의 난수: <script>
+            document.write(Math.round(Math.random() * 10));
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td>Math.round()</td>
+        <td>반올림한 정수값을 반환 (1.5->2, 1.2->1)</td>
+        <td>Math.round(14.5) :
+          <script>
+            document.write(Math.round(14.5));
+          </script>
+          <br>Math.round(14.435):
+          <script>
+            document.write(Math.round(14.435));
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td>Math.floor()</td>
+        <td>내림한 정수값을 반환 (1.5->1, 1.2->1)</td>
+        <td>Math.floor(14.5) :
+          <script>
+            document.write(Math.floor(14.5));
+          </script>
+          <br>Math.floor(14.435):
+          <script>
+            document.write(Math.floor(14.435));
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td>Math.trunc()</td>
+        <td>정수만 반환</td>
+        <td>Math.trunc(14.5)
+          <script>
+            document.write(Math.trunc(14.5));
+          </script>
+          <br>Math.trunc(14.435):
+          <script>
+            document.write(Math.trunc(14.435));
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td>Math.sign()</td>
+        <td>양수인지 음수인지 확인(양수면 1, 음수면 -1, 0이면 0을 반환)</td>
+        <td>Math.sign(14.5)
+          <script>
+            document.write(Math.sign(14.5));
+          </script>
+          <br>Math.sign(-10/0):
+          <script>
+            document.write(Math.sign(-10/0));
+          </script>
+          <br>Math.sign(14.435):
+          <script>
+            document.write(Math.sign(-14.435));
+          </script>
+
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>
