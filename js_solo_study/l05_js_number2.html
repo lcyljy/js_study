@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>javaScript Number Type</title>
+  </head>
+
+  <body>
+    <article>
+      <h2>입력 요소에서 입력받은 value가 숫자인지 검사하기</h2>
+      <ul>
+        <li>
+          <!-- 2021-(age-1) -->
+          <input
+            type="text"
+            id="age"
+            name="age"
+            value=""
+            placeholder="나이를 입력하세요"
+            onchange="birthdayAlert(event)"
+          /><span id="ageTest" style="color: red">ㅇㅇ</span>
+          <script>
+            function birthdayAlert(e) {
+              // 1~120까지의 숫자만 받고(다른 수가 넘어올 경우 1~120 숫자만 입력하세요.)
+              // 숫자가 될수 없는 문자열이 넘어올 경우 다시 입력하세요(숫자만)
+
+              if (isNaN(e.target.value)) {
+                // e.target.value값이 NaN이면...
+                // if(Number.isNaN((e.target.value)*1)){ << 도 작동
+                document.getElementById("ageTest").innerText =
+                  "숫자만 입력해주세요";
+                e.target.value = ""; //입력값에 관계없이 입력창 초기화
+              } else {
+                // e.target.value값이 NaN이 아니면(숫자면)
+                if (e.target.value >= 1 && e.target.value <= 120) {
+                  // 1이상 120이하인지 확인
+                  document.getElementById("ageTest").innerText =
+                    "당신이 태어난 해는 :" +
+                    (2021 - e.target.value + 1) +
+                    "입니다.";
+                  //해당 내의 값이 true면 위 문구 출력
+                } else {
+                  // 만약 e.target.value의 값이 1이상 120이하가 아니면..
+                  document.getElementById("ageTest").innerText =
+                    "1~120의 숫자만 입력해주세요";
+                  e.target.value = ""; //입력값에 관계없이 입력창 초기화
+                }
+              }
+            }
+
+            // 질문 1. 입력값에 관계없이 입력창 초기화에서. 해당 값이 앞에 있는 값이 true여야 출력되도록 하려면 &&을 쓰라는데 해당 위치에 &&을 넣었을 때 해당 코드가 작동하지 않음.
+
+            //
+          </script>
+        </li>
+        <li>
+          <input
+            type="text"
+            name="age"
+            value=""
+            placeholder="나이를 입력하세요"
+            onkeyup="thisIsTheTest(event)"
+          />
+          <span id="dmddksehl"></span>
+          <!-- onkeydown으로 입력 받은 값이 숫자가 아니면 입력할 수 없게 해라 -->
+
+          <script>
+            // document.addEventListener('onkeydown', event){
+            //   keyCode=13
+            // }
+            let ageTest2 = document.getElementById("dmddksehl");
+            function thisIsTheTest(e) {
+              if ((e.keyCode >= 48 && e.keyCode <= 57) || e.keyCode == 8) {
+                // 0~9, 숫자만 입력, 백스페이스만 허용
+                ageTest2.innerText = "";
+                if (e.target.value >= 1 && e.target.value <= 120) {
+                  // 1~120이 넘는 경우에만 해 입력, 넘으면 else구문 실행
+                  ageTest2.innerText =
+                    "당신이 태어난 해는 :" +
+                    (2021 - e.target.value + 1) +
+                    "입니다.";
+                } else {
+                  ageTest2.innerText = "응 안되 돌아가!";
+                }
+              } else {
+                // 숫자가 아니거나 백스페이스가 아닌 다른 키가 눌렸을 경우 입력칸을 빈칸으로 만듦
+                e.target.value = "";
+                ageTest2.innerText = "숫자만 입력해!";
+              }
+            }
+          </script>
+        </li>
+      </ul>
+    </article>
+  </body>
+</html>
