@@ -15,15 +15,194 @@
     <p> const a=["b","c","a","z","f","e","h"];</p>
     <li>a.toString(): 쉼표로 구분된 배열의 값을 문자열로 출력한다.
       <script>
-        document.write(a.toString())
+        document.write(a.toString());
       </script>
     </li>
     <li>a.join() : 배열의 값을 join()으로 결합한 문자열을 출력한다
       <script>
-        document.write(a.join("-"))
+        document.write(a.join("-"));
       </script>
     </li>
+    <li>a.pop() : 배열의 마지막 값을 제거하면서 반환한다.
+      <!-- <script>document.write("a.pop():"+a.pop()+", a:"+a)</script><br> //밑에거랑 같은 의미 -->
+      <script>
+        document.write(`a.pop():${a.pop()}, a:${a}`);
+      </script>
+    </li>
+    <li>a.push() : 배열의 마지막에 새 값을 추가한다.
+      <script>
+        a.push("pushValue");
+        document.write(a);
+      </script>
+    </li>
+    <li>a[a.length]="k" : 배열의 마지막에 새 값을 추가한다.<br>
+      *(a[maxIndex+1==a.length])<br>
+      <script>
+        a[a.length] = "k"; // ????
+        document.write(a);
+      </script>
+    </li>
+    <li>a.shift() : 배열의 첫번째 값을 제거하고 반환한다.(모든 인덱스를 한칸 당긴다)<script>
+        document.write(`a.shift() : ${a.shift()}, a : ${a}`);
+      </script>
+    </li>
+    <li>a.unshift() : 배열의 첫번째에 새 값을 추가한다. (모든 인덱스가 한칸 밀린다.)<script>
+        document.write(`a.unshift() : ${a.unshift("A")}, a : ${a}`);
+      </script>
+    </li>
+    <li>a.concat(9,0,[1,3,2],[4]) : 배열의 끝에 '새로운 배열을 추가한' 배열을 반환한다.(배열을 바꾸지 않고 다른 배열을 반환한다.) -기존배열은 그대로
+      <script>
+        let ab = a.concat(9, 0, [1, 3, 2], [4]);
+        document.write(ab);
+        // console.log(a);
+        // console.log(ab);
+      </script>
+    </li>
+    <li>a.slice(start_index, end_index) : 특정 위치(start~end)의 배열을 새로운 배열로 반환한다. - 기존배열은 그대로
+      <script>
+        let sa = a.slice(2, 4);
+        document.write(`let sa=a.slice(2,4) : ${sa} / a : ${a}`);
+        // console.log(a)
+        // console.log(sa)
+      </script>
 
+    </li>
+    <li>a.splice(start, delete_length, insert_item...) : 특정 위치부터 원하는 길이까지 삭제하고 추가할 수 있다.<br>
+      <script>
+        document.write("a.splice(3,1) :" + a.splice(3, 1) + " / " + "a :" + a);
+      </script><br>
+      <script>
+        document.write(`a.splice(4,2,"추가") : ${a.splice(4,2,"추가")} / a: ${a}`);
+      </script><br>
+      <script>
+        document.write(`a.splice(4,1,"t1","t2","t3"]) : ${a.splice(4,1,"t1","t2","t3")} / a: ${a}`);
+      </script><br>
+      <script>
+        document.write(`a.splice(2,0,"t1","t2","t3"]) : ${a.splice(2,0,"t1","t2","t3")} / a: ${a}`);
+      </script>
+    </li>
+    <li>
+      a.sort() : 배열의 요소를 순서대로 정렬한다.<br>
+      <script>
+        document.write(a.sort() + " / " + a)
+      </script>
+    </li>
+    <li>
+      a.reverse() : 배열의 요소를 역순으로 정렬한다.
+      <script>
+        document.write(a.reverse());
+      </script>
+    </li>
+    <hr>
+    <article>
+      <h2>배열문제</h2>
+      <form id=arrayColors>
+        <p>
+          <label>
+            화이트 : <input type="checkbox" name="arrayColor" value="화이트">
+          </label>
+          <label>
+            레몬 : <input type="checkbox" name="arrayColor" value="레몬">
+          </label>
+          <label>
+            오렌지 : <input type="checkbox" name="arrayColor" value="오렌지">
+          </label>
+          <label>
+            블루 : <input type="checkbox" name="arrayColor" value="블루">
+          </label>
+          <label>
+            그린 : <input type="checkbox" name="arrayColor" value="그린">
+          </label>
+          <label>
+            레드 : <input type="checkbox" name="arrayColor" value="레드">
+          </label>
+          <label>
+            블랙 : <input type="checkbox" name="arrayColor" value="블랙">
+          </label>
+        </p>
+        <p>
+          <input type="text" name="inputColor" placeholder="레몬, 화이트" value="" onchange="changeA(event)">
+          <input type="button" name="" value="입력" onclick="submitA(event)">
+        </p>
+      </form>
+      <script>
+        console.log(document.getElementById("arrayColors"));
+        // console.log(document.forms[0].getElementsByName("arrayColor"));
+        console.log(document.getElementsByName("arrayColor"));
+        let arrayColor = document.getElementsByName("arrayColor");
+        let inputColor = document.getElementsByName("inputColor")[0];
+        console.log(inputColor.value);
+        // console.log(arrayColor[0].value);
+        function changeA(e) {
+          let changeAspace = [];
+          // console.log(changeAspace);
+
+          // console.log(e.target.value.split(",")[j].trim());
+
+          // if (changeAspace.value == arrayColor[j].value ) {
+          //   console.log("확인");
+          // }
+          inputColor.value = e.target.value;
+          // console.log(changeAspace);
+
+          // console.log(changeAspace[0]);
+          // inputColor.value = changeAspace;
+          // console.log(inputColor.value);
+
+        }
+
+        function submitA(e) {
+
+          for (j = 0; j < inputColor.value.split(",").length; j++) {
+            changeAspace = inputColor.value.split(",")[j].trim();
+            // arrayColor[1].checked = true;
+            for (i = 0; i < arrayColor.length; i++) {
+              // console.log(arrayColor.length);
+              // console.log(arrayColor[i].value);
+              // console.log(inputColor);
+              if (arrayColor[i].value == changeAspace) {
+                if (arrayColor[i].checked !== true) {
+                  arrayColor[i].checked = true;
+                  // arrayColor[i].checked == true;
+                  // arrayColor[i].checked == true;
+                } else {
+                  arrayColor[i].checked = false;
+                }
+              }
+
+            }
+          }
+        }
+// <------------- 과제 완료 ---------------------->
+// <------------- 위에 체크하면 input에 입력되도록 만들기 ------->
+     for (m=0; m< arrayColor.length; m++){
+        arrayColor[m].addEventListener("click", inputCheck);
+        function inputCheck(e){
+          for (l = 0; l < arrayColor.length; l++) {
+            if (e.target.checked == true) {
+              inputColor.value = e.target.value;
+            }
+          }
+        }
+}
+// <--------------------미완성... 하나씩만 작동.. ---------->
+        // console.log(arrayColor.);
+
+        // let test = "화이트, 레몬, 오렌지";
+
+        // console.log(test.split(","));
+        // console.log(test.split(",")[1].trim())
+        // test.split(",")[i].trim()
+      </script>
+
+    </article>
+    <article>
+      <h2>달력만들기</h2>
+      <p>2021 달력을 반복문으로 출력하세요</p>
+      <script>
+        const days = "Sun";
+      </script>
+    </article>
   </main>
 </body>
 
