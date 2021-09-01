@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>js array</title>
+</head>
+
+<body>
+  <h1>자바스크립트의 배열</h1>
+  <p>여러 변수를 index로 참조해 저장하는 데이터 타입(Iterator 상속하고 있다.)</p>
+  <p>작성법 : const array =[item1, item2, ....] (기본데이터타입 처럼 사용가능)</p>
+  <p>작성법2 : const array=new Array(item1, imes2, .....) (권장하진 않음)</p>
+  <p>호출법: array[index]</p>
+  <p>대입 : array[index]=value</p>
+  <p>["a","b","c","d"].toString(): <script> let a=["a","b","c","d"]; document.write(a.toString());</script>
+        (객체를 바로 호출하면 toString()이 생략된다.)
+  </p>
+  <p>대입: array[index]=value 예) a[1]="B" : <script>a[1]="B"; document.write(a);</script></p>
+  <p>typeof []: <script>document.write(typeof a);</script> (배열의 타입을 typeof로 검사할 수 없다.)</p>
+  <p>Array.isArray([]): <script>document.write(Array.isArray(a));</script> (Array 타입이면 true)</p>
+  <p>Array[maxIndex+1]=value: <script>a[4]="e"; document.write(a);</script> (자바스크립트는 동적으로 배열의 길이를 조절한다)</p>
+  <script>
+    const arrayTest = [1, 2, 3, 4, "오", 6.0, 7.5];
+    const arrayTest2 = new Array(1, 2, 3, 4, "오", 6.0, 7.5);
+    const arrayTest3 = [1, 2, 3, "오", 4, 6.0, 7.5];
+    const arrayTest4 = [2 ,3,4,7.5,6.0,1,"오","a"];
+    const arrayCompare = function(array1, array2) { // 이름이 없는 익명함수를 변수가  참조하는 형태의 함수
+      // 1. 길이 같은지 검사;
+      // 2. 인덱스 위치에 value가 같아야 같은 배열이다.
+      // 3. index에 값들이 같은지 검사 하다가 다른 것이 나오면 break; 반복문 멈춘다.; return false;
+
+      for( let i in array1) {
+        // console.log(array1[i]==array2[i]);
+        console.log(array1[i]+":"+array2[i]);
+
+        if (array1[i]!=array2[i]) {
+          return false;
+        }
+        // if(array1[i]!=array2[i]) {
+        //   break;
+        // } else {
+        //   return false;
+        // }
+      }
+
+      // for( let i in array2) {
+      //   console.log(i);
+      // }
+
+
+      // for (let i in array1) {
+      //   console.log(i+":" array1[i]);
+      //   if(array1[i]!=array2[i]){
+      //    retrun alert("둘은 같지 않다");
+      //  }
+      // }
+      return true; // 매개변수 두 개가 같은지 검사
+    }
+    // console.log(arrayTest);
+    // console.log(arrayTest2);
+    // console.log("문자열생성");
+    // console.log(new String("문자열생성"));
+    // console.log(arrayTest[0] == arrayTest2[0]);
+
+  console.log( arrayCompare(arrayTest2, arrayTest3));
+    //function arrayCompare(){}
+  </script>
+  <script>
+    function sumInput(){
+      let number= new Array()
+      let arraySum = prompt("숫자를 입력해주세요");
+    }
+  </script>
+</body>
+
+</html>

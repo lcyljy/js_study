@@ -51,76 +51,133 @@
       <td>일부 문자를 추출할 때 사용한다.</td>
       <td>
         "스파게티 피자 된장찌개 샌드위치".slice(8,12) :
-        <script>document.write("스파게티 피자 된장찌개 샌드위치".slice(8,12))</script>
+        <script>
+let foodList="스파게티 피자 된장찌개 샌드위치";
+        document.write("스파게티 피자 된장찌개 샌드위치".slice(8,12))</script>
         <br>"스파게티 피자 된장찌개 샌드위치".slice(-9,-5) :
         <script>document.write("스파게티 피자 된장찌개 샌드위치".slice(-9,-5))</script>
         <br>"스파게티 피자 된장찌개 샌드위치".slice(5) :
         <script>document.write("스파게티 피자 된장찌개 샌드위치".slice(5))</script>
         <br>"스파게티 피자 된장찌개 샌드위치".slice(-5) :
         <script>document.write("스파게티 피자 된장찌개 샌드위치".slice(-5))</script>
+        <br>foodList.slice(foodList.length-4,foodList.length) :
+        <script>document.write(foodList.slice(foodList.length-4,foodList.length))</script>
       </td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td>
-        <script>document.write()</script>
+      <td>substring(start,end)</td>
+      <td>slice와 동일하지만 양수 인덱스만 사용가능</td>
+      <td>"스파게티 피자 된장찌개 샌드위치".substring(5,7) :
+        <script>document.write("스파게티 피자 된장찌개 샌드위치".substring(5,7));</script>
       </td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td>
-        <script>document.write()</script>
+      <td>substr(start, length)</td>
+      <td>일부 문자를 추출한다. 이 때 시작점부터 길이까지 추출한다.</td>
+      <td>"스파게티 피자 된장찌개 샌드위치".substr(8,4) :
+        <script>document.write("스파게티 피자 된장찌개 샌드위치".substr(8,4))</script>
+        <br>"스파게티 피자 된장찌개 샌드위치".substr(-9,4) :
+          <script>
+
+          document.write("스파게티 피자 된장찌개 샌드위치".substr(-9,4))</script>
+          <br>"스파게티 피자 된장찌개 샌드위치".substr(-9,length-4) :
+            <script>document.write("스파게티 피자 된장찌개 샌드위치".substr(foodList.length-4,4))</script>
       </td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td>
-        <script>document.write()</script>
+      <td>startsWith(string, position)</td>
+      <td>특정 문자열로 시작하는지 여부(boolean) *굳이 position 넣어야하나?</td>
+      <td>foodList.startsWith("스파") :
+        <script>document.write(foodList.startsWith("스파"))</script>
+        <br>foodList.startsWith("된장",8) :
+          <script>document.write(foodList.startsWith("된장",8))</script>
       </td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td>
-        <script>document.write()</script>
+      <td>endswith(String,position=String.length)</td>
+      <td>끝에서부터 특정 문자열로 시작하는지 여부(boolean)</td>
+      <td>foodList.endsWith("위치") :
+        <script>document.write(foodList.endsWith("위치"))</script>
+        <br>foodList.endsWith("샌드") :
+          <script>document.write(foodList.endsWith("샌드"))</script>
+        <br>foodList.endsWith("된장") :
+          <script>document.write(foodList.endsWith("된장",10))</script>
       </td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
+      <td>includes(String,start position=0)</td>
+      <td>특정 위치부터 특정 문자열이 있는지 여부 검색 (boolean)</td>
       <td>
-        <script>document.write()</script>
+        foodList.includes("찌개") :
+        <script>document.write(foodList.includes("찌개"))</script>
+        <br>foodList.includes("찌개",11) :
+        <script>document.write(foodList.includes("찌개",11))</script>
       </td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
+      <td>indexOf(String,start position=0)</td>
+      <td>시작 또는 특정 위치 부터 특정 문자열이 있는지 검색 후 해당 문자열의 시작지점을 반환, 특정 문자열이 없을 때 -1을 반환</td>
       <td>
-        <script>document.write()</script>
+        foodList.indexOf("피자") :
+        <script>document.write(foodList.indexOf("피자"))</script>
+        <br>foodList.indexOf("피자",6) :
+        <script>document.write(foodList.indexOf("피자",6))</script>
       </td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
+      <td>lastIndexOf(String,start position=0)</td>
+      <td>끝 또는 특정 위치부터 거꾸로 특정 문자열이 있는지 검색 후 해당 문자열의 시작지점을 반환, 특정 문자열이 없을 때 -1을 반환</td>
       <td>
-        <script>document.write()</script>
+        "Brave new world. Brave!".lastIndexOf("r") :
+        <script>let test="Brave new world. Brave!";
+        document.write(test.lastIndexOf("r"))</script>
+        <br>"Brave new world. Brave!".indexOf("r") :
+        <script>document.write(test.indexOf("r"))</script>
+        <br>"Brave new world. Brave!".lastIndexOf("Brave") :
+        <script>document.write(test.lastIndexOf("Brave"))</script>
+        <br>"Brave new world. Brave!".indexOf("Brave") :
+        <script>document.write(test.indexOf("Brave"))</script>
+        <br>"Brave new world. Brave!".lastIndexOf("new",5) :
+        <script>document.write(test.lastIndexOf("new",5))</script>
+        <br>"Brave new world. Brave!".indexOf("new",5) :
+        <script>document.write(test.indexOf("new",5))</script>
+      </td>
       </td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td>
-        <script>document.write()</script>
+      <td>split(String, limit length)</td>
+      <td>특정 문자열을 기준으로 나누어 배열로 만든다.(길이를 정할 수 있다.) </td>
+      <td>foodList.split(" ",3) :
+        <script>
+        // console.log(foodList);
+        // console.log(foodList.split(" ").join(","));
+        console.log(typeof foodList);
+        console.log(typeof foodList.split(" "));
+        document.write(foodList.split(" ",3))</script>
+        <br> foodList.split(",") :
+        <script>document.write(foodList.split(","))</script>
       </td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td>
-        <script>document.write()</script>
+      <td>replace()</td>
+      <td>특정 문자열이나 정규식 패턴으로 검색 후 다른 문자열로 변환한 값을 반환 (x=x.replacE() x, x != x.replace()) // 실제 값을 변경시키는게 아님</td>
+      <td>foodList.replace("된장찌개","스테이크") :
+        <script>document.write(foodList.replace("된장찌개","스테이크"))
+        console.log(foodList)</script>
+        <br>foodList.replace(" ",",") :
+        <script>document.write(foodList.replace(" ",","))
+        </script>
+      </td>
+    </tr>
+    <tr>
+      <td>replaceAll()</td>
+      <td>특정 문자열이나 정규식 패턴으로 검색 후 검색한 모든 문자열을 다른 문자열로 변환한 값을 반환</td>
+      <td>foodList.replaceAll(" ",",") :
+        <script>document.write(foodList.replaceAll(" ",","))
+        </script>
+        <br>foodList.replaceAll(" ",",") :
+          <script>document.write(foodList.replaceAll(" ",function(){","}))
+          </script>
       </td>
     </tr>
   </tbody>
