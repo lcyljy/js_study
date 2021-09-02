@@ -237,11 +237,14 @@
 
     </article>
     <article>
-      <h2>달력만들기</h2>
-      <p>2021 달력을 반복문으로 출력하세요</p>
-      <script>
-        const days = "Sun";
-      </script>
+      <hr>
+     <h2>달력만들기</h2>
+     <p>2021 달력을 반복문으로 출력하세요</p>
+<script>
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+console.log(new Date(2021,1,0).getDate());
+console.log(days[new Date("2021-01-01T00:00:00").getDay()])
+</script>
     </article>
   </main>
 </body>
