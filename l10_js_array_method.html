@@ -4,6 +4,14 @@
 <head>
   <meta charset="utf-8">
   <title>js array method</title>
+  <style>
+    label {
+      border: 1px solid black;
+      border-radius: 15px;
+      margin: 3px;
+      padding: 2px;
+    }
+  </style>
 </head>
 
 <body>
@@ -126,6 +134,7 @@
         </p>
       </form>
       <script>
+        // console.log(document.forms.arrayColors.arrayColor);
         console.log(document.getElementById("arrayColors"));
         // console.log(document.forms[0].getElementsByName("arrayColor"));
         console.log(document.getElementsByName("arrayColor"));
@@ -134,7 +143,7 @@
         console.log(inputColor.value);
         // console.log(arrayColor[0].value);
         function changeA(e) {
-          let changeAspace = [];
+
           // console.log(changeAspace);
 
           // console.log(e.target.value.split(",")[j].trim());
@@ -148,12 +157,13 @@
           // console.log(changeAspace[0]);
           // inputColor.value = changeAspace;
           // console.log(inputColor.value);
-
+          // console.log(inputColor.value.split(",").trim());
         }
 
         function submitA(e) {
 
           for (j = 0; j < inputColor.value.split(",").length; j++) {
+
             changeAspace = inputColor.value.split(",")[j].trim();
             // arrayColor[1].checked = true;
             for (i = 0; i < arrayColor.length; i++) {
@@ -173,19 +183,49 @@
             }
           }
         }
-// <------------- 과제 완료 ---------------------->
-// <------------- 위에 체크하면 input에 입력되도록 만들기 ------->
-     for (m=0; m< arrayColor.length; m++){
-        arrayColor[m].addEventListener("click", inputCheck);
-        function inputCheck(e){
-          for (l = 0; l < arrayColor.length; l++) {
+        // <------------- 과제 완료 ---------------------->
+        // <------------- 위에 체크하면 input에 입력되도록 만들기 ------->
+        for (m = 0; m < arrayColor.length; m++) {
+          arrayColor[m].addEventListener("click", inputCheck);
+        }
+        function inputCheck(e) {
+          if (inputColor.value.includes(e.target.value) !== true) {
             if (e.target.checked == true) {
-              inputColor.value = e.target.value;
+              // for (l = 0; l < arrayColor.length; l++) {
+              if (inputColor.value !== "") {
+                inputColor.value += ", " + e.target.value;
+              } else {
+                inputColor.value = e.target.value;
+              }
             }
           }
+          // }
+
+          else {  // input에 타겟에 해당하는 값이 포함되어있을 때
+            if (e.target.checked !== true) { // 클릭한 곳이 체크가 안되어있으면
+              let testbbb = inputColor.value.split(", ");
+              // console.log(testbbb);
+              for(let l = 0; l < testbbb.length; l++) {
+                if(testbbb[l] == e.target.value ){
+                  testbbb.splice(l, 1);
+                  l--;
+                  inputColor.value = testbbb.join(", ");
+                  // console.log(testbbb);
+                }
+              }
+            }
+            // console.log(inputColor.value.includes(e.target.value));
+            // if (inputColor.value.includes(e.target.value) == true) {
+            //   const testaaaaa = [];
+            //   testaaaaa.push(inputColor.value);
+            //   testaaaaa.indexOf(e.target.value); //입력된 값에서 해당 체크된 것 찾음
+            //   testaaaaa.slice(testaaaaa.indexOf(e.target.value), e.target.value.length);
+            //   inputColor.value = testaaaaa.toString();
+            // }
+          }
         }
-}
-// <--------------------미완성... 하나씩만 작동.. ---------->
+
+        // <--------------------완성!!!!. ---------->
         // console.log(arrayColor.);
 
         // let test = "화이트, 레몬, 오렌지";
