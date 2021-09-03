@@ -146,6 +146,30 @@ console.timeEnd("ifElseTest time");
       switchTest(2)
       console.timeEnd("switchTest time");
     </script>
+    <article>
+      <h2>삼항연산자</h2>
+      <p>작성법1: (condition)? true : false == if(condition){true}else{false}</p>
+      <p>작성법2: let variable = (condition) ? trueObject : falseObjcet;</p>
+      <pre>작성법3:
+          (condition) ? true
+        : (condition2) ? true
+        : (condition3) ? true
+        : false
+      </pre>
+      <p>if(condition){}else if(condition2){}else if(condition3)?{}else{}</p>
+      <p>조건 파악이 편하고 코드가 간결해 프로그래밍 속도를 증가시킨다.</p>
+      <script>
+        // (1>0) ? window.alert(true) : window.alert(false);
+        // window == this(현재) == 생략가능
+        // (1>0) ? alert("1>0") : alert("1<0");
+      </script>
+      <ul>
+        <li><script>document.write(`(1>0) ? "1>0" : "1<0" = ${ (1>0) ? "1>0":"1<0"}`);</script></li>
+        <li><script>document.write(`(true) ? "참입니다" : "거짓입니다" = ${ (true) ? "참입니다":"거짓입니다"}`);</script></li>
+        <li><script>document.write(`(false) ? "참입니다" : "거짓입니다" = ${ (false) ? "참입니다":"거짓입니다"}`);</script></li>
+
+      </ul>
+    </article>
   </main>
 </body>
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+body{
+background-Color : default;
+}
+    </style>
+  </head>
+  <body>
+    <li>{black:["black","white"],default:["white","black"],darkgray:["darkgray","bisque"],pink["lavender","indigo"]} :
+    <select name="themeSelect">
+      <option value="black">블랙테마</option>
+      <option value="default">기본테마</option>
+      <option value="darkgray">메탈테마</option>
+      <option value="pink">핑크테마</option>
+    </select>
+<script>
+let themes={black:["black","white"],default:["white","black"],darkgray:["darkgray","bisque"],pink:["lavender","indigo"]};
+// console.log(themes["black"]);
+// console.log(document.getElementsByName("themeSelect")[0].value);
+// for (let test in themes){
+//   // console.log(test);
+//   // console.log(themes[test]);
+  // console.log(themes[test][0]);
+
+//   console.log(themes[test][1]);
+// }
+// document.bgColor=(themes["black"][0]);
+console.log(themes["black"][0]);
+document.addEventListener("change" , function(event){
+  // console.log("1");
+  for (let test in themes){
+ // document.backgroundColor = themes["black"][0];
+document.bgColor=(themes[test][0]);
+ }
+});
+//테마를 선택하면 body의 backgroundColor와 color를 바꾸세요.
+</script>
+  </li>
+  </body>
+</html>
