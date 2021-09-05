@@ -1,285 +1,315 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>js loop iteration</title>
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>js loop iteration</title>
-</head>
-
-<body>
-  <h1>자바 스크립트의 루프와 반복</h1>
-  <p>for,forin,forof,while,dowhile 반복문(iteration statements)이 있다.</p>
-  <p>똑같은 명령을 일정 횟수만큼 반복하기 위해 작성되는 문법, 대체로 검사식에 많이 이용.</p>
-  <article>
-    <h2>for 반복문</h2>
-    <p>for([초기문]; [조건문]; [증감문];{반복실행} : for는 조건이 true일 때 반복실행한다</p>
-    <script>
-      // let n=0;
-      // while(n<10){
-      //   console.log(`n: ${n}`);
-      //   n++;
-      // }
-      // for(let n=0; n<10; n++){
-      //   console.log(`n : ${n}`);
-      // }
-    </script>
-    <ul>
-      <li>[11,2,20,3,13,1,0,-20]의 max :
-        <script>
-          //           let a = [11,2,20,3,13,1,0,100,-20];
-          //           // let b = 10;
-          //           let max = (-Infinity);
-          //           // max= (max<b) ? b : max;
-          //           // console.log(max);
-          // // for(let i =0; i<a.length; i++){
-          // //   (max<a[i]) ? max=a[i] : max=max
-          // //   console.log(`a[i] : ${a[i]}  / max : ${max}`);
-          // // };
-        </script>
-      </li>
-      <li>[11,2,20,3,13,1,0,100,-20] 높은 순서대로 정렬 :
-        <script>
-          //    let b = [];
-          //    //a에서 max를 발견하면 삭제하고 b에  순서대로 담는다.
-          //    max=(-Infinity);
-          //
-          //    console.log(b);
-          // for(let k =0; k<a.length; k++){
-          //   if(a[k]>max) {
-          //     b[b.length]=a[k];
-          //     max=a[k];
-          //     a.splice(k,1,"["+k+"]");
-          //   // } console.log(a, b);
-          // }
-          //
-          //    //a에서 max를 발견하면 맨 앞으로 돌리고 맨 앞을 제외하고 다시 max를 찾는다.
-          //
-          //
-          //  //버블정렬 : 0,1 비교 후 작은 수를 뒤로 1,2 비교 후 작은 수를 뒤
-          //  //(1차 반복문이 마치면 가장 작은 수가 제일 뒤로 간다. 밀어내기 정렬)
-          //  let c=[11,2,20,3,13,1,0,100,-20]
-          //  for(let j=0; j<c.length; j++){
-          //    // console.log(j);
-          //    // console.log(c);
-          //    let temp;
-          //    for(let l=0; l<c.length-1; l++){
-          //
-          //      if(c[l]<c[l+1]){
-          //        temp=c[l];
-          //        c[l]=c[l+1];
-          //        c[l+1]=temp;
-          //      }
-          //    }
-          //  }
-        </script>
-      </li>
-      <li>[11,2,-20,3,13,1,0,100,20] 낮은 순서대로 버블정렬(밀어내기) :</li>
-      <li>높은 순서대로 선택정리하세요</li>
-      <!-- 전체 중에 가장 높은 값의 위치를 찾아서 앞자리와 바꾸세요 -->
-      <!-- 맨 얖자리를 제외하고 제일 높은 값을 찾아서 맨 앞자리 바로 뒤랑 바꾸세요.. 끝까지하세요 -->
-      <!-- [100,2,-20,3,13,1,0,11,20] -->
+  <body>
+    <h1>자바 스크립트의 루프와 반복</h1>
+    <p>for,forin,forof,while,dowhile 반복문(iteration statements)이 있다.</p>
+    <p>
+      똑같은 명령을 일정 횟수만큼 반복하기 위해 작성되는 문법, 대체로 검사식에
+      많이 이용.
+    </p>
+    <article>
+      <h2>for 반복문</h2>
+      <p>
+        for([초기문]; [조건문]; [증감문];{반복실행} : for는 조건이 true일 때
+        반복실행한다
+      </p>
       <script>
-        let a = [11, 2, -20, 3, 13, 1, 0, 100, 20];
-        let b = "";
-        let max = (-Infinity);
-        // console.log(a);
-        for (i = 0; i < a.length; i++) {
-          for (k = 0 + i; k < a.length; k++) {
-            // if(max<a[i-1]){
-            if (a[k] > max) {
-              max = a[k];
-              b = k;
-            }
-          }
-          // }
-          // console.log(max);
-          console.log("함수 실행전 배열 [" + a + "]");
-          console.log((i + 1) + "번째");
-
-          console.log((i + 1) + '번째 max값의 위치 : ' + b);
-          let c = a[b]; // i번째 max값의 위치 저장
-          console.log((i + 1) + '번째 max의 값 : ' + c);
-          let d = a[i]; // i위치의 값. 저장
-          console.log((i + 1) + "번째 비교할 값 : " + d);
-
-
-          a.splice(b, 1, a[i]); // max값 위치의 값 제거 및 i번째 처음 위치값 저장
-          // console.log(a);
-          // a.splice(b+1,0,d);
-          a.splice(i, 1, c); // i번째의 i위치의 값 제거 max값 맨 앞으로 빼기
-          // console.log(a);
-
-          console.log((i + 1) + "회전 결과");
-          console.log(a);
-          max = (-Infinity);
-          // i번째 찾았을때 max값 찾기.
-
-          //for문
-        }
+        // let n=0;
+        // while(n<10){
+        //   console.log(`n: ${n}`);
+        //   n++;
+        // }
+        // for(let n=0; n<10; n++){
+        //   console.log(`n : ${n}`);
+        // }
       </script>
-    </ul>
-  </article>
-  <script>
-    // for (let i = 0; i < 5; i++) { //열바꿈
-    //   for (let i = 0; i < 5; i++) {
-    //     document.write("*");
-    //   }
-    //   document.write("<br>");
-    // }
-    // for (let k = 0; k < 6; k++) {
-    //   for (let i = 0; i < 6; i++) {
-    //     if (k > i) {
-    //       document.write("*");
-    //     }
-    //   }
-    //   document.write("<br>"); //열바꿈
-    // }
-    // document.write("<br>")
-    // for (let k = 0; k < 6; k++) {
-    //   for (let i = 0; i < 6; i++) {
-    //     if (k < i) {
-    //       document.write("*");
-    //     }
-    //   }
-    //   document.write("<br>"); //열바꿈
-    // }
-    //
-    // for (let k = 0; k < 5; k++) {
-    //   for (let i = 0; i < 5; i++) {
-    //     if (i >= Math.abs(k - 4)) {
-    //       document.write("*");
-    //     } else {
-    //       document.write("&nbsp;");
-    //     }
-    //     // i>k+1 && i <=  k+2 && i >= k-2
-    //   }
-    //   document.write("<br>"); //열바꿈
-    // }
-    // document.write("<br>")
-    // for (let k = 0; k < 7; k++) {
-    //   for (let i = 0; i < 7; i++) {
-    //     if (i <= Math.abs(k - 3)) {
-    //       document.write("1");
-    //     } else {
-    //       document.write("0");
-    //     }
-    //     // i>k+1 && i <=  k+2 && i >= k-2
-    //   }
-    //   document.write("<br>"); //열바꿈
-    // }
-    // // document.write("<br>")
-    // // for (let k = 0; k < 5; k++) {
-    // //   if( k == 2 ){
-    // //   for (let i = 0; i < 5; i++) {
-    // //     if (i == k+2 || i == k-2) {
-    // //       document.write("1");
-    // //     } else {
-    // //       document.write("0");
-    // //     }
-    // //     // i>k+1 && i <=  k+2 && i >= k-2
-    // //   }
-    // //   }
-    // //   document.write("<br>"); //열바꿈
-    // // }
-    // //
+      <ul>
+        <li>
+          [11,2,20,3,13,1,0,-20]의 max :
+          <script>
+            //           let a = [11,2,20,3,13,1,0,100,-20];
+            //           // let b = 10;
+            //           let max = (-Infinity);
+            //           // max= (max<b) ? b : max;
+            //           // console.log(max);
+            // // for(let i =0; i<a.length; i++){
+            // //   (max<a[i]) ? max=a[i] : max=max
+            // //   console.log(`a[i] : ${a[i]}  / max : ${max}`);
+            // // };
+          </script>
+        </li>
+        <li>
+          [11,2,20,3,13,1,0,100,-20] 높은 순서대로 정렬 :
+          <script>
+            //    let b = [];
+            //    //a에서 max를 발견하면 삭제하고 b에  순서대로 담는다.
+            //    max=(-Infinity);
+            //
+            //    console.log(b);
+            // for(let k =0; k<a.length; k++){
+            //   if(a[k]>max) {
+            //     b[b.length]=a[k];
+            //     max=a[k];
+            //     a.splice(k,1,"["+k+"]");
+            //   // } console.log(a, b);
+            // }
+            //
+            //    //a에서 max를 발견하면 맨 앞으로 돌리고 맨 앞을 제외하고 다시 max를 찾는다.
+            //
+            //
+            //  //버블정렬 : 0,1 비교 후 작은 수를 뒤로 1,2 비교 후 작은 수를 뒤
+            //  //(1차 반복문이 마치면 가장 작은 수가 제일 뒤로 간다. 밀어내기 정렬)
+            //  let c=[11,2,20,3,13,1,0,100,-20]
+            //  for(let j=0; j<c.length; j++){
+            //    // console.log(j);
+            //    // console.log(c);
+            //    let temp;
+            //    for(let l=0; l<c.length-1; l++){
+            //
+            //      if(c[l]<c[l+1]){
+            //        temp=c[l];
+            //        c[l]=c[l+1];
+            //        c[l+1]=temp;
+            //      }
+            //    }
+            //  }
+          </script>
+        </li>
+        <li>[11,2,-20,3,13,1,0,100,20] 낮은 순서대로 버블정렬(밀어내기) :</li>
+        <li>높은 순서대로 선택정리하세요</li>
+        <!-- 전체 중에 가장 높은 값의 위치를 찾아서 앞자리와 바꾸세요 -->
+        <!-- 맨 얖자리를 제외하고 제일 높은 값을 찾아서 맨 앞자리 바로 뒤랑 바꾸세요.. 끝까지하세요 -->
+        <!-- [100,2,-20,3,13,1,0,11,20] -->
+        <script>
+          let a = [11, 2, -20, 3, 13, 1, 0, 100, 20];
+          let b = "";
+          let max = -Infinity;
+          // console.log(a);
+          for (i = 0; i < a.length; i++) {
+            for (k = 0 + i; k < a.length; k++) {
+              // if(max<a[i-1]){
+              if (a[k] > max) {
+                max = a[k];
+                b = k;
+              }
+            }
+            // }
+            // console.log(max);
+            console.log("함수 실행전 배열 [" + a + "]");
+            console.log(i + 1 + "번째");
 
-    /*
+            console.log(i + 1 + "번째 max값의 위치 : " + b);
+            let c = a[b]; // i번째 max값의 위치 저장
+            console.log(i + 1 + "번째 max의 값 : " + c);
+            let d = a[i]; // i위치의 값. 저장
+            console.log(i + 1 + "번째 비교할 값 : " + d);
+
+            a.splice(b, 1, a[i]); // max값 위치의 값 제거 및 i번째 처음 위치값 저장
+            // console.log(a);
+            // a.splice(b+1,0,d);
+            a.splice(i, 1, c); // i번째의 i위치의 값 제거 max값 맨 앞으로 빼기
+            // console.log(a);
+
+            console.log(i + 1 + "회전 결과");
+            console.log(a);
+            max = -Infinity;
+            // i번째 찾았을때 max값 찾기.
+
+            //for문
+          }
+        </script>
+      </ul>
+    </article>
+    <script>
+      // for (let i = 0; i < 5; i++) { //열바꿈
+      //   for (let i = 0; i < 5; i++) {
+      //     document.write("*");
+      //   }
+      //   document.write("<br>");
+      // }
+      // for (let k = 0; k < 6; k++) {
+      //   for (let i = 0; i < 6; i++) {
+      //     if (k > i) {
+      //       document.write("*");
+      //     }
+      //   }
+      //   document.write("<br>"); //열바꿈
+      // }
+      // document.write("<br>")
+      // for (let k = 0; k < 6; k++) {
+      //   for (let i = 0; i < 6; i++) {
+      //     if (k < i) {
+      //       document.write("*");
+      //     }
+      //   }
+      //   document.write("<br>"); //열바꿈
+      // }
+      //
+      // for (let k = 0; k < 5; k++) {
+      //   for (let i = 0; i < 5; i++) {
+      //     if (i >= Math.abs(k - 4)) {
+      //       document.write("*");
+      //     } else {
+      //       document.write("&nbsp;");
+      //     }
+      //     // i>k+1 && i <=  k+2 && i >= k-2
+      //   }
+      //   document.write("<br>"); //열바꿈
+      // }
+      // document.write("<br>")
+      // for (let k = 0; k < 7; k++) {
+      //   for (let i = 0; i < 7; i++) {
+      //     if (i <= Math.abs(k - 3)) {
+      //       document.write("1");
+      //     } else {
+      //       document.write("0");
+      //     }
+      //     // i>k+1 && i <=  k+2 && i >= k-2
+      //   }
+      //   document.write("<br>"); //열바꿈
+      // }
+      // // document.write("<br>")
+      // // for (let k = 0; k < 5; k++) {
+      // //   if( k == 2 ){
+      // //   for (let i = 0; i < 5; i++) {
+      // //     if (i == k+2 || i == k-2) {
+      // //       document.write("1");
+      // //     } else {
+      // //       document.write("0");
+      // //     }
+      // //     // i>k+1 && i <=  k+2 && i >= k-2
+      // //   }
+      // //   }
+      // //   document.write("<br>"); //열바꿈
+      // // }
+      // //
+
+      /*
 k=3
 i == 1,
      */
-  </script>
-  <article>
-    <h2>forin 반복문</h2>
-    <p>for(key in iterationObject){} : key를 가진 객체 key를 반환할 수 없을 때까지 반복을 실행</p>
-    <p>JSON{key:value,key:value} => key를 반환, Array[a,b,c] => index를 반환</p>
-    <ul>
-      <li>["a","b","c"] :
-        <script>
-          let f = ["a", "b", "c"];
-          for (key in f) {
-            document.write(`key : ${key} , `)
-          }
-        </script>
-      </li>
-      <li>{name:"이창영",age=28,email="lodin_love@naver.com"}
-        <script>
-          let g = {
-            name: "이창영",
-            age: 28,
-            email: "lodin_love@naver.com"
-          }
-          for (key in g) {
-            document.write(`key : ${key} value : ${g[key]},<br> `);
-          }
-        </script>
-      </li>
-      <li> "abcdefg" :
-        <script>
-          let s = "abcdefg";
-          for(let key in s){
-            document.write(`key : ${key} value : ${s[key]},<br> `);
-          }
-        </script>
+    </script>
+    <article>
+      <h2>forin 반복문</h2>
+      <p>
+        for(key in iterationObject){} : key를 가진 객체 key를 반환할 수 없을
+        때까지 반복을 실행
+      </p>
+      <p>
+        JSON{key:value,key:value} => key를 반환, Array[a,b,c] => index를 반환
+      </p>
+      <ul>
+        <li>
+          ["a","b","c"] :
+          <script>
+            let f = ["a", "b", "c"];
+            for (key in f) {
+              document.write(`key : ${key} , `);
+            }
+          </script>
+        </li>
+        <li>
+          {name:"이창영",age=28,email="lodin_love@naver.com"}
+          <script>
+            let g = {
+              name: "이창영",
+              age: 28,
+              email: "lodin_love@naver.com",
+            };
+            for (key in g) {
+              document.write(`key : ${key} value : ${g[key]},<br> `);
+            }
+          </script>
+        </li>
+        <li>
+          "abcdefg" :
+          <script>
+            let s = "abcdefg";
+            for (let key in s) {
+              document.write(`key : ${key} value : ${s[key]},<br> `);
+            }
+          </script>
+        </li>
+      </ul>
+    </article>
+    <article>
+      <h2>forof 반복문</h2>
+      <p>for (object of iterationObject){}</p>
+      <p>
+        반복 가능한 데이터 타입의 객체에서 더이상 내용물이 나오지 않을 때까지
+        반복실행
+      </p>
+      <p>
+        (iterationObject).next(): next()는 포인트가 객체 밖에 있다가 내용물이
+        있으면 true를 반환하고 내용물로 포인트를 옮긴다. 그리고 내용물도
+        반환한다. 만약 값이 더이상 나오지 않으면 false를 반환한다.
+      </p>
+      <p>배열, Map(json과 비슷), Set(배열인데 복수의 값을 제거), 문자열</p>
+      <p>key값을 알아내기 힘들다</p>
+      <ul>
+        <li>
+          ["a","b","c"] :
+          <script>
+            for (let v of f) {
+              document.write(v + ",");
+            }
+          </script>
+        </li>
+        <li>
+          {name: "이창영", age: 28, email: "lodin_love@naver.com"} : json은
+          next()가 지원하지 않는다.
+        </li>
+        <li>
+          "abcdefg" :
+          <script>
+            for (let v of s) {
+              document.write(v + ",");
+            }
+          </script>
+        </li>
+        <li>
+          {black:["black","white"],default:["white","black"],darkgray:["darkgray","bisque"],pink["lavender","indigo"]}
+          :
+          <select name="themeSelect">
+            <option value="black">블랙테마</option>
+            <option value="default">기본테마</option>
+            <option value="darkgray">메탈테마</option>
+            <option value="pink">핑크테마</option>
+          </select>
+          <script>
+              let themes={black:["black","white"],default:["white","black"],darkgray:["darkgray","bisque"],pink:["lavender","indigo"]};
+              console.log(themes["black"]);
+              // console.log(document.getElementsByName("themeSelect")[0].value);
+              // for (let test in themes){
+              //   // console.log(test);
+              //   // console.log(themes[test]);
+                console.log(themes[test][0]);
+                console.log(themes[test]);
+              //   console.log(themes[test][1]);
+              // }
+              function themesTest(){ for (let test in themes){
+              document.backgroundColor = themes[test][0];
+            }
+            };
+              document.addEventListener("click" , themesTest(event){
+                // console.log("1");
 
-      </li>
-    </ul>
-  </article>
-  <article>
-    <h2>forof 반복문</h2>
-    <p>for (object of iterationObject){}</p>
-    <p>반복 가능한 데이터 타입의 객체에서 더이상 내용물이 나오지 않을 때까지 반복실행</p>
-    <p>(iterationObject).next(): next()는 포인트가 객체 밖에 있다가 내용물이 있으면  true를 반환하고 내용물로 포인트를 옮긴다. 그리고 내용물도 반환한다.
-    만약 값이 더이상 나오지 않으면 false를 반환한다.</p>
-    <p>배열, Map(json과 비슷), Set(배열인데 복수의 값을 제거), 문자열</p>
-    <p>key값을 알아내기 힘들다</p>
-    <ul>
-      <li>["a","b","c"] :
-        <script>
-        for (let v of f){
-          document.write(v+",")
-        }</script>
-      </li>
-      <li>{name: "이창영", age: 28, email: "lodin_love@naver.com"} : json은 next()가 지원하지 않는다.
-      </li>
-      <li>"abcdefg" : <script>for(let v of s){document.write(v+",");}</script></li>
-      <li>{black:["black","white"],default:["white","black"],darkgray:["darkgray","bisque"],pink["lavender","indigo"]} :
-      <select name="themeSelect">
-        <option value="black">블랙테마</option>
-        <option value="default">기본테마</option>
-        <option value="darkgray">메탈테마</option>
-        <option value="pink">핑크테마</option>
-      </select>
-<script>
-  let themes={black:["black","white"],default:["white","black"],darkgray:["darkgray","bisque"],pink:["lavender","indigo"]};
-  console.log(themes["black"]);
-  // console.log(document.getElementsByName("themeSelect")[0].value);
-  // for (let test in themes){
-  //   // console.log(test);
-  //   // console.log(themes[test]);
-    console.log(themes[test][0]);
-    console.log(themes[test]);
-  //   console.log(themes[test][1]);
-  // }
-  function themesTest(){ for (let test in themes){
-  document.backgroundColor = themes[test][0];
-}
-};
-  document.addEventListener("click" , themesTest(event){
-    // console.log("1");
-
-});
-  //테마를 선택하면 body의 backgroundColor와 color를 바꾸세요.
-</script>
-    </li>
-    </ul>
-  </article>
-  <nav>
-    <!-- #popnav>li -->
-  </nav>
-  <script>
-    // 마우스를 올렸을 때. 화면에서 보이도록 변경
-  </script>
-
-</body>
-
+            });
+              //테마를 선택하면 body의 backgroundColor와 color를 바꾸세요.
+          </script>
+        </li>
+      </ul>
+    </article>
+    <nav>
+      <!-- #popnav>li -->
+    </nav>
+    <script>
+      // 마우스를 올렸을 때. 화면에서 보이도록 변경
+    </script>
+  </body>
 </html>
