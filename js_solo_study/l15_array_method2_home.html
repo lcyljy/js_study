@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>js array method2</title>
+  <style>
+    body {
+      box-sizing: border-box;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .cssScore {
+
+      border: 1px solid rgba(233, 0, 123, 0.8);
+      border-radius: 30px;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      height: 250px;
+      margin: 10px auto;
+      padding: 0;
+
+    }
+
+    .cssScore li {
+      list-style: none;
+    }
+
+    input[type="button"] {
+      width: 45px;
+    }
+
+    input[type="number"] {
+      width: 50px;
+    }
+
+    #btnScore #btnUnivScore {
+      width: 100px;
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gradeScore {
+      border: 1px solid rgba(35, 240, 120, 0.5);
+      border-radius: 30px;
+      height: 100%;
+      background-color: rgba(35, 240, 120, 0.5);
+    }
+
+    .tb {
+      width: 70%;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <article>
+      <h2>문제</h2>
+      <ul class="cssScore">
+
+        <li>
+          총 점수를 구하세요 <input id="btnTotal" type="button" value="총점" />
+        </li>
+        <li>
+          평균 점수를 구하세요 <input id="btnAvg" type="button" value="평균" />
+        </li>
+        <li>
+          최소 점수를 구하세요 <input id="btnMin" type="button" value="최소" />
+        </li>
+        <li>
+          최대 점수를 구하세요 <input id="btnMax" type="button" value="최대" />
+        </li>
+        <li>
+          낙제가 있는지 찾으세요 <input id="btnFff" type="button" value="낙제" />
+        </li>
+        <li>
+          만점이 있는지 찾으세요 <input id="btnPerfect" type="button" value="만점" />
+        </li>
+        <li>
+          모든 점수를 100점 만점에서 4.5점 만점으로 변경하세요
+        </li>
+        <li>
+          <button id="btnUnivScore" type="button" name="univScore">
+            4.5점 만점
+          </button>
+          <button id="btnScore" type="button" name="score">100점 만점</button>
+        </li>
+      </ul>
+      <form class="cssScore" name="someTestForm" action="index.html" method="post">
+        <div class="gradeScore">
+          <p>
+            <label>수학 점수 :
+              <input type="number" class="score" name="m" value="70" /></label>
+          </p>
+          <p>
+            <label>영어 점수 :
+              <input type="number" class="score" name="e" value="90" /></label>
+          </p>
+          <p>
+            <label>화학 점수 :
+              <input type="number" class="score" name="c" value="100" /></label>
+          </p>
+          <p>
+            <label>국사 점수 :
+              <input type="number" class="score" name="h" value="30" /></label>
+          </p>
+          <p>
+            <label>국어 점수 :
+              <input type="number" class="score" name="k" value="70" /></label>
+          </p>
+        </div>
+        <div class="gradeScore">
+          <p>
+            <label>총 점수 : <input type="number" name="total" value="0" readonly /></label>
+          </p>
+          <p>
+            <label>평균 점수 : <input type="number" name="avg" value="0" readonly /></label>
+          </p>
+          <p>
+            <label>최소 점수 : <input type="number" name="min" value="0" readonly /></label>
+          </p>
+          <p>
+            <label>최대 점수 : <input type="number" name="max" value="0" readonly /></label>
+          </p>
+          <p>
+            <label>낙제가(v
+              <50) 있는지(0/1) : <input type="number" name="is_f" value="0" readonly />
+            </label>
+          </p>
+          <p>
+            <label>만점이 있는지(0/1) :
+              <input type="number" name="is_ten" value="0" readonly /></label>
+          </p>
+        </div>
+      </form>
+      <script>
+        const someTestForm = document.forms["someTestForm"];
+        const scores = someTestForm.querySelectorAll("[type=number].score");
+        const scoreList = Array.from(scores); //domList를 array로 변경 => every,some,map 사용가능
+        // scoreList.map (function(v){console.log(v)});
+        console.log(scoreList);
+        // console.log(scoreList);
+        // scores.forEach((v, i) => {console.log(v);});
+
+        //총점수 구하기
+        // 1. 총점수가 입력되는 주소를 구한다. 해당 값에 나머지 과목의 점수들을 합한 값을 넣는다.
+        // 2. 이때 위에 총점 점수를 눌렀을 때 동작하도록 만든다.
+        let total = someTestForm.querySelector("[name=total]");
+        let avg = someTestForm.querySelector("[name=avg]");
+        let smin = someTestForm.querySelector("[name=min]");
+        let smax = someTestForm.querySelector("[name=max]");
+        let is_f = someTestForm.querySelector("[name=is_f]");
+        let is_ten = someTestForm.querySelector("[name=is_ten]");
+        console.log(total.value);
+
+        const btnTotal = document.getElementById("btnTotal");
+        console.log(btnTotal);
+        btnTotal.addEventListener("click", function(e) {
+          let testSum = 0;
+          scoreList.forEach(function(v) {
+            testSum += Number(v.value);
+          });
+          total.value = testSum;
+        });
+
+        const btnAvg = document.getElementById("btnAvg");
+        console.log(btnAvg);
+        btnAvg.addEventListener("click", function(e) {
+          let testSum = 0;
+          scoreList.forEach(function(v) {
+            testSum += Number(v.value);
+          });
+          avg.value = testSum / scoreList.length;
+        });
+
+        const btnMin = document.getElementById("btnMin");
+        console.log(btnMin);
+        btnMin.addEventListener("click", function(e) {
+          testMin = Infinity;
+          scoreList.forEach(function(v) {
+            if (testMin > Number(v.value)) {
+              testMin = Number(v.value);
+            }
+            smin.value = testMin;
+          });
+        });
+
+        const btnMax = document.getElementById("btnMax");
+        console.log(btnMax);
+        btnMax.addEventListener("click", function(e) {
+          testMax = -Infinity;
+          scoreList.forEach(function(v) {
+            if (testMax < Number(v.value)) {
+              testMax = Number(v.value);
+            }
+            smax.value = testMax;
+          });
+        });
+
+        const btnFff = document.getElementById("btnFff");
+        console.log(btnFff);
+        btnFff.addEventListener("click", function(e) {
+          scoreList.forEach(function(v) {
+            if (Number(v.value) < 50) {
+              is_f.value = 1;
+            }
+          });
+        });
+
+        const btnPerfect = document.getElementById("btnPerfect");
+        console.log(btnFff);
+        btnPerfect.addEventListener("click", function(e) {
+          scoreList.forEach(function(v) {
+            if (Number(v.value) == 100) {
+              is_ten.value = 1;
+            }
+          });
+        });
+
+        const btnUnivScore = document.getElementById("btnUnivScore");
+
+        console.log(btnUnivScore);
+        btnUnivScore.addEventListener("click", function(e) {
+          for (i = 0; i < scoreList.length; i++) {
+            if (scoreList[i].value > 4.5) {
+              scoreList[i].value = (scoreList[i].value * 0.045).toFixed(2);
+            }
+          }
+        });
+
+        const btnScore = document.getElementById("btnScore");
+
+        console.log(btnScore);
+        btnScore.addEventListener("click", function(e) {
+          for (i = 0; i < scoreList.length; i++) {
+            if (scoreList[i].value > 0 && scoreList[i].value <= 4.5) {
+              scoreList[i].value = (scoreList[i].value * 1000) / 45;
+            }
+          }
+        });
+        // document.
+        // scoreList
+        // total.value =
+
+        // console.log(someTestForm.querySelector("[name=total]").value) 총 점수의 위치 체크
+        // let total = parseInt(someTestForm.querySelector("[name=total]").value);
+        // console.log(total); //총점수 확인
+        // console.log(someTestForm.querySelectorAll("[class=score]").length); //과목의 수
+        // const btnTotal = document.getElementById('btnTotal');
+        // console.log(btnTotal);
+        // btnTotal.addEventListener("click", function(e){
+        //
+        //   for( i=0; i<someTestForm.querySelectorAll("[class=score]").length; i++) {
+        //     total += parseInt(someTestForm.querySelectorAll("[class=score]")[i].value);
+        //
+        //   }
+        // });
+
+        // console.log(total);
+      </script>
+      <table class="grade cssScore tb">
+        <thead>
+          <tr>
+            <th>과목</th>
+            <th>점수</th>
+            <th>4.5</th>
+            <th>낙제</th>
+            <th>만점</th>
+            <th>성적</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="gradeM">
+            <td>수학</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+          </tr>
+          <tr class="gradeE">
+            <td>영어</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+          </tr>
+          <tr class="gradeC">
+            <td>화학</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+          </tr>
+          <tr class="gradeH">
+            <td>국사</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+          </tr>
+          <tr class="gradeK">
+            <td>국어</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+          </tr>
+          <tr>
+            <td>총점수</td>
+            <td>?</td>
+            <td>평균</td>
+            <td>?</td>
+            <td>4.5평균</td>
+            <td>?</td>
+          </tr>
+        </tbody>
+      </table>
+      <script>
+        // let subject = ["m", "e", "c", "h", "k"];
+        // // console.log(document.querySelectorAll(".grade tbody tr")[0]);
+        // // document.querySelectorAll(lastIndexOf(toLowerCase()
+        // console.log(subject);
+        // console.log(document.querySelectorAll(".gradeM td"));
+        // console.log(document.querySelectorAll(".gradeC td"));
+        // // 점수 : 수학~국어 점수 입력값을 가져다가. name=subject[i];
+        // // 점수 : 수학~국어 테이블 위치 ".grade"+i td[2] 에 넣기
+        // //
+        // // 총점
+        // // for(i=0; i<scoreList.length; i++)
+        // //  document.querySelectorAll(".gradeM td")[1].innerText = scoreList[0].value;
+        // //  document.querySelectorAll(".gradeE td")[1].innerText = scoreList[1].value;
+        // //  document.querySelectorAll(".gradeC td")[1].innerText = scoreList[2].value;
+        // //  document.querySelectorAll(".gradeH td")[1].innerText = scoreList[3].value;
+        // //  document.querySelectorAll(".gradeK td")[1].innerText = scoreList[4].value;
+        // // function subjectUpper() {
+        // //   {
+        // //     subject[i].toUpperCase();
+        // //   }
+        // // } //m =>M
+        // // (document.querySelectorAll(`.grade${subjectUpper} td`));
+        // //   function gradeSub() {
+        // //   for(i=0; i<scoreList.length; i++) {
+        // //     subject[i]
+        // //   };
+        // // }
+        // // console.log(scoreList[0].name);
+        // //   for (i = 0; i < scoreList.length; i++)  {
+        // //     if ( subject[i] == scoreList[i].name)
+        // // }
+        // // console.log(gradeSub());
+        // const testAA = document.querySelectorAll(".grade tbody tr");
+        // console.log(testAA[0]);
+        // const testB = [testAA[0]];
+        // console.log(testB);
+        // console.log(document.querySelectorAll(".grade tbody tr")[0]);
+        // // document.querySelectorAll(".gradeM td")[1].innerText =
+        // //   scoreList[0].value;
+        // // document.querySelectorAll(".gradeM td")[2].innerText =
+        // //   (scoreList[0].value * 45) / 1000;
+        // // if (scoreList[0].value < 50) {
+        // //   document.querySelectorAll(".gradeM td")[3].innerText = 1;
+        // // } else {
+        // //   document.querySelectorAll(".gradeM td")[3].innerText = 0;
+        // // }
+        // // document.querySelectorAll(".gradeE td")[1].innerText =
+        // //   scoreList[1].value;
+        // // document.querySelectorAll(".gradeC td")[1].innerText =
+        // //   scoreList[2].value;
+        // // document.querySelectorAll(".gradeH td")[1].innerText =
+        // //   scoreList[3].value;
+        // // document.querySelectorAll(".gradeK td")[1].innerText =
+        // //   scoreList[4].value;
+        var a = new String('문자열데이터');
+        console.log(new String('문자열') == a);
+      </script>
+    </article>
+  </main>
+</body>
+
+</html>

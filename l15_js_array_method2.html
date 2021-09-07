@@ -252,6 +252,106 @@
       </ul>
     </article>
     <article>
+      <h2>reduce()</h2>
+      <p>배열의 모든 요소를 하나의 값으로 줄인다. (배열의 길이만큼 함수를 호출하고(콜백함수) 하나가 된 값을 반환한다.)</p>
+      <script>
+        const arr = [10, 20, 30, 40, 50];
+        //a[0]+a[1]=a0
+        //a0+a[2]=a1;
+        //a1+a[3]=a2;
+        //a2+a[4]=a3;
+        console.log(arr.reduce(function(x, y) {
+          return x + y;
+        }));
+        console.log(arr.reduce((x, y) => (x + y) / 2));
+        console.log(arr.reduce((x, y) => x - y));
+
+        let arrSum = 0;
+        arr.forEach((item) => {
+          arrSum += item
+        });
+        console.log(`sum: ${arrSum}`);
+      </script>
+    </article>
+    <article>
+      <h2>reduceRight(function(x,y){return})</h2>
+      <p>배열의 마지막에서부터 모든 요소를 하나의 값으로 줄인다. (배열의 길이만큼 함수를 호출하고(콜백함수) 하나가 된 값을 반환한다.)</p>
+    </article>
+    <article>
+      <h2>Array.find((v,i,s)=>boolean=테스트)</h2>
+      <p>배열에서 테스트를 통과한 첫번째 요소를 반환</p>
+    </article>
+    <article>
+      <h2>Array.findIndex((v,i,s)=>boolean=테스트)</h2>
+      <p>배열의 테스트를 통과한 첫번째 요소의 인덱스를 반환(찾지못하면 -1)</p>
+    </article>
+    <article>
+      <h2>Array.includes(value)</h2>
+      <p>배열에 해당 요소가 있는지 검사(return boolean)</p>
+    </article>
+    <article>
+      <h2>Array.indexOf()</h2>
+      <p>배열에 해당요소가 있는지 검사해서 해당 위치(index)를 반환(첫번째 검색되는 항목)</p>
+    </article>
+    <article>
+      <h2>lastIndexOf()</h2>
+      <p>배열에 해당 요소가 있는지 검사해서 해당 위치(index)를 반환(마지막에 검색되는 항목)</p>
+    </article>
+    <article>
+      <h2>keys()</h2>
+      <p>keys()를 호출하면 반복과 관련된 객체인 Iterator가 반환되고 Iterator에서 key(index)를 확인할 수 있다.</p>
+      <p>Iterator.next()=>[반환되는 데이터, 반환할 데이터가 있는] / forof에서 사용 for ( 반환되는 데이터 of Iterator.next())</p>
+      <p>[10,20,30,40].keys() : <script>
+          document.write([10, 20, 30, 40].keys())
+        </script>
+      </p>
+      <p>[10,20,30,40].keys() forof 출력 :
+        <script>
+          let keys = [10, 20, 30, 40].keys();
+          for (key of keys) {
+            document.write(`key: ${key},`);
+          }
+        </script>
+      </p>
+      <p>Object.keys([10,20,30,40]) : <script>
+          document.write(Object.keys([10, 20, 30, 40]));
+        </script>
+      </p>
+    </article>
+    <article>
+      <h2>Array.isArray()</h2>
+      <p>typeof Array : object를 반환한다. 이 때 데이터가 배열인지 확인하는 함수</p>
+      <p>배열은 기본데이터 타입이 아니기 때문에 리터럴한 입력을 입력해도 인스턴스 객체다.</p>
+      <p>let a=10;(리터럴) // let a=new Number(10), const b=[1,2,3] // const b = new Array(1,2,3)</p>
+      <ul>
+        <li>typeof[10,20,30,40] : <script>
+            document.write(typeof([10, 20, 30, 40]));
+          </script>
+        </li>
+        <li>Array.isArray[10,20,30,40] : <script>
+            document.write(Array.isArray([10, 20, 30, 40]));
+          </script>
+        </li>
+        <li>Array.isArray( new Array (10,20,30,40)) : <script>
+            document.write(Array.isArray(new Array(10, 20, 30, 40)));
+          </script>
+        </li>
+        <li>객체 instanceof 타입 : 객체의 타입을 비교, 이때 타입은 부모도 포함(기본데이터 타입은 비교할 수 없다.)</li>
+        <li>[1,2,3] instanceof Array: <script>
+            document.write([1, 2, 3] instanceof Array)
+          </script>
+        </li>
+        <li>[1,2,3] instanceof Object: <script>
+            document.write([1, 2, 3] instanceof Object)
+          </script>
+        </li>
+        <li>new Array(1,2,3) instanceof Array: <script>document.write(new Array(1,2,3) instanceof Array)</script></li>
+        <li>"안녕" instanceof String: <script>document.write("안녕" instanceof String)</script></li>
+        <li>"안녕" instanceof Object: <script>document.write("안녕" instanceof Object)</script></li>
+        <li>new String("안녕") instanceof String: <script>document.write(new String("안녕") instanceof String)</script></li>
+      </ul>
+    </article>
+    <article>
       <h2>문제</h2>
       <ul>
         <li>총 점수를 구하세요<input id="btnTotal" type="button" value="총점"></li>
@@ -319,157 +419,157 @@
         const btnMin = document.getElementById("btnMin");
         console.log(btnMin);
         btnMin.addEventListener("click", function(e) {
-              testMin = Infinity
-              scoreList.forEach(function(v) {
-                if (testMin > Number(v.value)) {
-                  testMin = Number(v.value)
-                }
-                smin.value = testMin;
-              });
-            });
-
-
-      const btnMax = document.getElementById("btnMax");
-      console.log(btnMax);
-      btnMax.addEventListener("click", function(e) {
-            testMax = -Infinity
-            scoreList.forEach(function(v) {
-              if (testMax < Number(v.value)) {
-                testMax = Number(v.value)
-              }
-              smax.value = testMax;
-            });
+          testMin = Infinity
+          scoreList.forEach(function(v) {
+            if (testMin > Number(v.value)) {
+              testMin = Number(v.value)
+            }
+            smin.value = testMin;
           });
+        });
 
-       const btnFff = document.getElementById("btnFff");
-       console.log(btnFff);
-       btnFff.addEventListener("click", function(e) {
-            scoreList.forEach(function(v){
-              if (Number(v.value)<50){
-                is_f.value= 1;
-              }
-            })
 
-           });
+        const btnMax = document.getElementById("btnMax");
+        console.log(btnMax);
+        btnMax.addEventListener("click", function(e) {
+          testMax = -Infinity
+          scoreList.forEach(function(v) {
+            if (testMax < Number(v.value)) {
+              testMax = Number(v.value)
+            }
+            smax.value = testMax;
+          });
+        });
 
-     const btnPerfect = document.getElementById("btnPerfect");
-     console.log(btnFff);
-     btnPerfect.addEventListener("click", function(e) {
-          scoreList.forEach(function(v){
-            if (Number(v.value)==100){
-              is_ten.value= 1;
+        const btnFff = document.getElementById("btnFff");
+        console.log(btnFff);
+        btnFff.addEventListener("click", function(e) {
+          scoreList.forEach(function(v) {
+            if (Number(v.value) < 50) {
+              is_f.value = 1;
             }
           })
-         });
 
-      const btnUnivScore = document.getElementById("btnUnivScore");
+        });
 
-      console.log(btnUnivScore);
-      btnUnivScore.addEventListener("click", function(e) {
-            for(i=0; i<scoreList.length; i++){
-              if (scoreList[i].value > 4.5){
-        scoreList[i].value = (scoreList[i].value*0.045).toFixed(2)
-        }
-        }
-                });
+        const btnPerfect = document.getElementById("btnPerfect");
+        console.log(btnFff);
+        btnPerfect.addEventListener("click", function(e) {
+          scoreList.forEach(function(v) {
+            if (Number(v.value) == 100) {
+              is_ten.value = 1;
+            }
+          })
+        });
 
+        const btnUnivScore = document.getElementById("btnUnivScore");
 
-    const btnScore = document.getElementById("btnScore");
-
-    console.log(btnScore);
-    btnScore.addEventListener("click", function(e) {
-          for(i=0; i<scoreList.length; i++){
-            if (scoreList[i].value>0 && scoreList[i].value <= 4.5 ) {
-      scoreList[i].value = scoreList[i].value*1000/45
-}
-      }
-              });
-               // document.
-              // scoreList
-              // total.value =
+        console.log(btnUnivScore);
+        btnUnivScore.addEventListener("click", function(e) {
+          for (i = 0; i < scoreList.length; i++) {
+            if (scoreList[i].value > 4.5) {
+              scoreList[i].value = (scoreList[i].value * 0.045).toFixed(2)
+            }
+          }
+        });
 
 
+        const btnScore = document.getElementById("btnScore");
 
-              // console.log(someTestForm.querySelector("[name=total]").value) 총 점수의 위치 체크
-              // let total = parseInt(someTestForm.querySelector("[name=total]").value);
-              // console.log(total); //총점수 확인
-              // console.log(someTestForm.querySelectorAll("[class=score]").length); //과목의 수
-              // const btnTotal = document.getElementById('btnTotal');
-              // console.log(btnTotal);
-              // btnTotal.addEventListener("click", function(e){
-              //
-              //   for( i=0; i<someTestForm.querySelectorAll("[class=score]").length; i++) {
-              //     total += parseInt(someTestForm.querySelectorAll("[class=score]")[i].value);
-              //
-              //   }
-              // });
+        console.log(btnScore);
+        btnScore.addEventListener("click", function(e) {
+          for (i = 0; i < scoreList.length; i++) {
+            if (scoreList[i].value > 0 && scoreList[i].value <= 4.5) {
+              scoreList[i].value = scoreList[i].value * 1000 / 45
+            }
+          }
+        });
+        // document.
+        // scoreList
+        // total.value =
 
-              // console.log(total);
+
+
+        // console.log(someTestForm.querySelector("[name=total]").value) 총 점수의 위치 체크
+        // let total = parseInt(someTestForm.querySelector("[name=total]").value);
+        // console.log(total); //총점수 확인
+        // console.log(someTestForm.querySelectorAll("[class=score]").length); //과목의 수
+        // const btnTotal = document.getElementById('btnTotal');
+        // console.log(btnTotal);
+        // btnTotal.addEventListener("click", function(e){
+        //
+        //   for( i=0; i<someTestForm.querySelectorAll("[class=score]").length; i++) {
+        //     total += parseInt(someTestForm.querySelectorAll("[class=score]")[i].value);
+        //
+        //   }
+        // });
+
+        // console.log(total);
       </script>
       <table class="grade">
         <thead>
-        <tr>
-          <th>과목</th>
-          <th>점수</th>
-          <th>4.5</th>
-          <th>낙제</th>
-          <th>만점</th>
-          <th>성적</th>
-        </tr>
+          <tr>
+            <th>과목</th>
+            <th>점수</th>
+            <th>4.5</th>
+            <th>낙제</th>
+            <th>만점</th>
+            <th>성적</th>
+          </tr>
         </thead>
         <tbody>
-      <tr class="gradeM">
-        <td>수학</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-      </tr>
-      <tr class="gradeE">
-        <td>영어</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-      </tr>
-      <tr class="gradeC">
-        <td>화학</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-      </tr>
-      <tr class="gradeH">
-        <td>국사</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-      </tr>
-      <tr class="gradeK">
-        <td>국어</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-      </tr>
-      <tr>
-        <td>총점수</td>
-        <td>?</td>
-        <td>평균</td>
-        <td>?</td>
-        <td>4.5평균</td>
-        <td>?</td>
-      </tr>
-      </tbody>
+          <tr class="gradeM">
+            <td>수학</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+          </tr>
+          <tr class="gradeE">
+            <td>영어</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+          </tr>
+          <tr class="gradeC">
+            <td>화학</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+          </tr>
+          <tr class="gradeH">
+            <td>국사</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+          </tr>
+          <tr class="gradeK">
+            <td>국어</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+          </tr>
+          <tr>
+            <td>총점수</td>
+            <td>?</td>
+            <td>평균</td>
+            <td>?</td>
+            <td>4.5평균</td>
+            <td>?</td>
+          </tr>
+        </tbody>
       </table>
       <script>
-        let subject = ["m","e","c","h","k"];
+        let subject = ["m", "e", "c", "h", "k"];
         console.log(subject);
         console.log(document.querySelectorAll(".gradeM td"));
         console.log(document.querySelectorAll(".gradeC td"));
