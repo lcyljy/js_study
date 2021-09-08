@@ -78,34 +78,46 @@ toDateInput.value = today.getMonth()+1;
 printCalendar();
 
 
+
 preDate.addEventListener("click", function(){
-  cPreDate();
-  printCalendar();
+// if(toDateInput.value !=="1"){
+// }
+cPreDate();
+printCalendar();
 });
 
 
 
 function cPreDate(){
-  toDateInput.value = Number(toDateInput.value)-1;
-  preDate.innerText =  Number(toDateInput.value)-1+"월";
+  toDateInput.value = Number(toDateInput.value)%12-1;
+  preDate.innerText =  Number(toDateInput.value)%12-1+"월";
+  nextDate.innerText =  Number(toDateInput.value)%12+1+"월";
+
 };
 
 nextDate.addEventListener("click", function(){
-  cNextDate();
-  printCalendar();
+  // if(toDateInput.value !=="12"){
+  //
+  // }
+cNextDate();
+printCalendar();
 });
-
+// function testA(){
+//   if (nextDate. = 12)
+// }
+// console.log(nextDate.innerText.includes("12"));
 
 function cNextDate(){
   toDateInput.value = Number(toDateInput.value)+1;
-  nextDate.innerText =  Number(toDateInput.value)+1+"월";
+  preDate.innerText =  Number(toDateInput.value)%12-1+"월"
+  nextDate.innerText =  Number(toDateInput.value)%12+1+"월";
 
 };
 document.querySelector("#toDate input").addEventListener("change", printCalendar);
 
 
 function printCalendar(){
-let k = document.querySelector("#toDate input").value;
+let k = (document.querySelector("#toDate input").value)%12;
 let y = toYear.value;
 
   // k월의 마지막 일 구하기
@@ -143,9 +155,12 @@ let y = toYear.value;
 // } else if (k=1){
 //   preDate.innerText = "2021년 12월";
 // }
-preDate.innerText =  Number(toDateInput.value)-1+"월";
+preDate.innerText =  Number(toDateInput.value)-1+"월"
 nextDate.innerText =  Number(toDateInput.value)+1+"월";
+
 };
+
+
 // let k = document.querySelector("#toDate input").value;
 
 // preDate.addEventListener("click", function(){

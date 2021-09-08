@@ -34,3 +34,11 @@
   color: rgb(130,150,150);
   background-color: rgb(220,220,230);
 }
+
+#toYear{
+  width: 60px;
+}
+
+#toDate input{
+  width: 30px;
+}
