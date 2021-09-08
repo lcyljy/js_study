@@ -71,31 +71,49 @@ for( i=0; i<tdList.length; i+=7) {
 
 const toDateInput = document.querySelector("#toDate input");
 
+const toYear = document.querySelector("#toYear");
+
+toYear.value = today.getFullYear();
 toDateInput.value = today.getMonth()+1;
+printCalendar();
+
+
+preDate.addEventListener("click", function(){
+  cPreDate();
+  printCalendar();
+});
 
 
 
-preDate.addEventListener("click", cPreDate);
 function cPreDate(){
   toDateInput.value = Number(toDateInput.value)-1;
   preDate.innerText =  Number(toDateInput.value)-1+"월";
 };
 
-nextDate.addEventListener("click", cNextDate);
+nextDate.addEventListener("click", function(){
+  cNextDate();
+  printCalendar();
+});
+
+
 function cNextDate(){
   toDateInput.value = Number(toDateInput.value)+1;
   nextDate.innerText =  Number(toDateInput.value)+1+"월";
-};
-document.querySelector("#toDate input").addEventListener("change", function(){
-let k = document.querySelector("#toDate input").value;
 
+};
+document.querySelector("#toDate input").addEventListener("change", printCalendar);
+
+
+function printCalendar(){
+let k = document.querySelector("#toDate input").value;
+let y = toYear.value;
 
   // k월의 마지막 일 구하기
-  lastDay = new Date(2021,Number(k),0).getDate();
+  lastDay = new Date(Number(y),Number(k),0).getDate();
   // console.log(lastDay);
 
   // k월의 시작하는 요일 구하기 요일 0~6(일~토)
-  firstDay = new Date(2021,Number(k)-1,1).getDay();
+  firstDay = new Date(Number(y),Number(k)-1,1).getDay();
   // console.log(firstDay);
   // console.log(firstDay)
   let d =1 ;
@@ -104,7 +122,7 @@ let k = document.querySelector("#toDate input").value;
   // }
 
 
-  lastMonthLastDay = new Date(2021,Number(k)-1,0).getDate();
+  lastMonthLastDay = new Date(Number(y),Number(k)-1,0).getDate();
   for(i=firstDay-1; i>=0; i--){
     tdList[i].querySelector(".day").innerText= lastMonthLastDay--;
     tdList[i].classList.add("disabled");
@@ -127,7 +145,7 @@ let k = document.querySelector("#toDate input").value;
 // }
 preDate.innerText =  Number(toDateInput.value)-1+"월";
 nextDate.innerText =  Number(toDateInput.value)+1+"월";
-});
+};
 // let k = document.querySelector("#toDate input").value;
 
 // preDate.addEventListener("click", function(){

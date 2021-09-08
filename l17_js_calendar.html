@@ -57,9 +57,11 @@
 
   <h1>(일정 등록되는)달력 만들기</h1>
   <h2>
-    <button id="preDate" type="button">9월</button>
-    <span id="toDate">2021년 <input type="number" min=1 max=12 value="">월</span>
-    <button id="nextDate" type="button">10월</button>
+    <div>
+    <input type="number" id="toYear"></input>년 <button id="preDate" type="button">월</button>
+    <span id="toDate"> <input type="number" min=1 max=12 value="">월</span>
+    <button id="nextDate" type="button">월</button>
+    </div>
   </h2>
   <!-- (thead>tr>(th{일}+th{월}+th{화}+th{수}+th{목}+th{금}+th{토}))+tbody>(tr>td{$$}*7)*6 -->
   <!-- table#calendarTable>thead>tr>(th*7)))+(tbody>(tr>td(div.day_container>h5.day+ul.schedule>li*5)*7)*6) -->
