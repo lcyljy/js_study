@@ -19,5 +19,18 @@
 }
 
 #calendarTable .schedule{
-  display: none;
+  /* display: none; */
+  visibility: hidden;
+}
+
+#calendarTable th.sun, td.sun{
+  color: red;
+}
+#calendarTable th.sat, td.sat{
+  color: blue;
+}
+
+#calendarTable td.disabled{
+  color: rgb(130,150,150);
+  background-color: rgb(220,220,230);
 }
