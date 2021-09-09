@@ -65,11 +65,12 @@ console.log(document.querySelector("#toDate input").value);
 let i=0;
 
 
-for (i=0; i<tdList.length; i++){
+for ( i=0; i<tdList.length; i++){
   tdList[i].addEventListener("click", function(){
 
   })
 }
+
 for( i=0; i<tdList.length; i+=7) {
    tdList[i].classList.add("sun");
  }
