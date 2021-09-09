@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>js html</title>
+  </head>
+  <body>
+    <main>
+      <h1>자바스크립트로 html 문서 조작하기</h1>
+      <p>document.innerHTML은 문자열로 내부의 태그를 추가하거나 삭제하기 힘들다.</p>
+      <article>
+        <h2>document.element.append() </h2>
+        <p>element 자식 가장 뒤에 문자열이나 html 노드를 추가할 수 있다.</p>
+        <p>document.createElement()는 html 노드(요소)를 객체를 생성한다.</p>
+        <p>node_object.append("") : 노드 요소 안의 내용이 추가된다.</p>
+          <button type="button" onclick="
+          document.getElementById('appendTest').append(li_node);
+          ">append()</button>
+        <ul id="appendTest">
+          <li>0</li>
+          <li>1</li>
+          <li>2</li>
+        </ul>
+        <script>
+          // 브라우저가 html 문서를 해석해서 html 요소를 객체로 만들어 배치
+          // 이 때 배치된 배치표를 DOMtree라 하고 트리 안의 요소를 노드라한다.
+          // 노드(요소) 객체를 의미한
+          let li_node=document.createElement('li');
+          li_node.append("추가된내용");
+          li_node.prepend("aaa")
+          let cc_node=document.createElement('li');
+          cc_node.prepend("추가내용");
+        </script>
+      </article>
+      <article>
+        <h2>document.element.prepend() <button type="button" onclick="
+          document.getElementById('prependTest').prepend(cc_node);
+          document.getElementById('prependTest').append(li_node);
+          ">prepend()</button></h2>
+          <p>element 자식 가장 앞에 문자열이나 html 노드를 추가할 수 있다.</p>
+        <ul id="prependTest">
+          <li>0</li>
+          <li>1</li>
+          <li>2</li>
+        </ul>
+      </article>
+      <script>
+        let h3_node = document.createElement("h3");
+        h3_node.innerText="에프터 추가내용";
+        console.log(h3_node);
+      </script>
+      <article>
+        <h2>document.element.after() <button type="button" onclick="
+          document.getElementById('afterTest').after(h3_node);
+          ">after()</button></h2>
+          <p>선택자로 찾은 노드(요소)의 바로 뒤 형제에 추가</p>
+        <ul id="afterTest">
+          <li>0</li>
+          <li>1</li>
+          <li>2</li>
+        </ul>
+      </article>
+      <article>
+        <h2>document.element.before() <button type="button" onclick="
+          document.getElementById('beforeTest').before('<li>추가</li>');
+          ">before()</button></h2>
+        <ul id="beforeTest">
+          <li>0</li>
+          <li>1</li>
+          <li>2</li>
+        </ul>
+      </article>
+      <article>
+        <h2>0과 1사이에 li 노드를 추가하세요</h2>
+        <button type="button" onclick="document.getElementById('testA').after(aaa)">Id 지정</button>
+        <button type="button" onclick="document.getElementById('test').getElementsByTagName('li')[1].before(bbb)">getElementsByTagName</button>
+        <button type="button" onclick="document.querySelector('#test li:nth-child(1)').after(li_node)">nth-child(1)</button>
+        <ul id="test">
+          <li id="testA">0</li>
+          <li>1</li>
+          <li>2</li>
+        </ul>
+        <script>
+          let aaa = document.createElement("li");
+          aaa.prepend("0과 1 사이에 node 추가")
+          let bbb = document.createElement("li");
+          bbb.prepend("test")
+
+        </script>
+      </article>
+    </main>
+  </body>
+</html>

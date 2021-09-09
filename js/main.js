@@ -10,6 +10,7 @@ const preDate = document.querySelector("#preDate");
 const nextDate = document.querySelector("#nextDate");
 console.log(preDate);
 
+
 //hover 이벤트로 변경
 // tdList.forEach(function(td) {
 //   console.log(td.querySelector(".schedule"))
@@ -62,6 +63,13 @@ console.log(document.querySelector("#toDate input").value);
 // tdList[firstDay-l].querySelector(".day").innerText = new Date(2021,8,-l).getDate();
 // }
 let i=0;
+
+
+for (i=0; i<tdList.length; i++){
+  tdList[i].addEventListener("click", function(){
+
+  })
+}
 for( i=0; i<tdList.length; i+=7) {
    tdList[i].classList.add("sun");
  }
@@ -77,17 +85,6 @@ toYear.value = today.getFullYear();
 toDateInput.value = today.getMonth()+1;
 printCalendar();
 
-
-
-preDate.addEventListener("click", function(){
-// if(toDateInput.value !=="1"){
-// }
-cPreDate();
-printCalendar();
-});
-
-
-
 function cPreDate(){
   toDateInput.value = Number(toDateInput.value)-1;
   // nextDate.innerText =  Number(toDateInput.value)+1+"월";
@@ -98,6 +95,25 @@ function cPreDate(){
   // }
 
 };
+
+preDate.addEventListener("click", function(){
+// if(toDateInput.value !=="1"){
+// }
+cPreDate();
+printCalendar();
+});
+
+
+function cNextDate(){
+  toDateInput.value = Number(toDateInput.value)+1;
+//   preDate.innerText =  Number(toDateInput.value)-1+"월"
+//   if( toDateInput.value == "13") {
+//     nextDate.innerText ="1";
+//   } else {
+//   nextDate.innerText =  Number(toDateInput.value)+1+"월";
+// }
+};
+
 
 nextDate.addEventListener("click", function(){
   // if(toDateInput.value !=="12"){
@@ -111,96 +127,125 @@ printCalendar();
 // }
 // console.log(nextDate.innerText.includes("12"));
 
-function cNextDate(){
 
-  toDateInput.value = Number(toDateInput.value)+1;
-//   preDate.innerText =  Number(toDateInput.value)-1+"월"
-//   if( toDateInput.value == "13") {
-//     nextDate.innerText ="1";
-//   } else {
-//   nextDate.innerText =  Number(toDateInput.value)+1+"월";
-// }
-};
 document.querySelector("#toDate input").addEventListener("change", printCalendar);
 
 
 function printCalendar(){
-  let k = toDateInput.value;
+  let m = toDateInput.value;
   let y = toYear.value;
-if(k=="13") {
-  k = "1";
-  y = Number(y)+1;
+  console.log(m,y);
+if(Number(m)>13) {
+  m = Number(toDateInput.value)%12;
+  y = Number(toYear.value)+parseInt(Number(m)/12);
+} // 만약 13보다 큰값 입력시. 12로 나누어 나머지값을 m에, 몫을 y+? 값에...  m =m%12, y = Number(y)+m//12
+if(Number(m)==13) {
+  m="1";
+  y=Number(y)+1;
 }
-if(k=="0") {
-  k = "12";
+if(Number(m)==0) {
+  m = "12";
   y = Number(y)-1;
 }
-  // k월의 마지막 일 구하기
-  lastDay = new Date(Number(y),Number(k),0).getDate();
+if(Number(m)<0) {
+  y = Number(y) - 1 -parseInt(Number(m)/12);
+  m = Number(m) - Number(toDateInput.value)%12;
+  if(Number(m)==0) {
+    m = "12";
+  }
+}
+// 만약 0보다 작은값 입력시. 12로 나누어 나머지값 m에, 몫을 y+? 값에...
+// todateInput.value 에 입력한 값을 Number로 숫자로 인식되도록 바꾸어서 12로 나누어 나머지값이 m에 (나머지값이 0일때, m="12"), 몫을 Number(y)+(몫)
+// let m = Number(toDateInput.value)%12;
+// let y = toYear.value;
+//
+// if (m < 0) {
+//   y = toYear.value -1 + parseInt(Number(m)/12)
+// } else {
+//  y = Number(toYear.value)+parseInt(Number(m)/12)
+// };
+// if (m == 0) {
+//   m ="12";
+//   y = Number(toYear.value)+parseInt(Number(m)/12)
+// }
+// m이 0일때 혹은 0이 마이너스일 때. if(m=="0") m="12"
+// m
+// if( m == "0") {m="12"}
+  // m월의 마지막 일 구하기
+  lastDay = new Date(Number(y),Number(m),0).getDate();
   // console.log(lastDay);
 
-  // k월의 시작하는 요일 구하기 요일 0~6(일~토)
-  firstDay = new Date(Number(y),Number(k)-1,1).getDay();
+  // m월의 시작하는 요일 구하기 요일 0~6(일~토)
+  firstDay = new Date(Number(y),Number(m)-1,1).getDay();
   // console.log(firstDay);
   // console.log(firstDay)
   let d =1 ;
   // for(let l =0; l<firstDay; l++){
-  // tdList[firstDay-1-l].querySelector(".day").innerText = new Date(2021,Number(k),Number(lastDay)-l).getDate();
+  // tdList[firstDay-1-l].querySelector(".day").innerText = new Date(2021,Number(m),Number(lastDay)-l).getDate();
   // }
 
 
-  lastMonthLastDay = new Date(Number(y),Number(k)-1,0).getDate();
- // k-1달 표기
+  lastMonthLastDay = new Date(Number(y),Number(m)-1,0).getDate();
+ // m-1달 표기
   for(i=firstDay-1; i>=0; i--){
     tdList[i].querySelector(".day").innerText= lastMonthLastDay--;
     tdList[i].classList.add("disabled");
   };
- // 'k' 달 표기
+ // 'm' 달 표기
   for( i=firstDay; i<lastDay+firstDay; i++) {
     tdList[i].querySelector(".day").innerText= d++;
     tdList[i].classList.remove("disabled");
   };
-  // k+1달 표기
+  // m+1달 표기
     for( i=lastDay+firstDay,d=1; i<tdList.length;i++){
     tdList[i].querySelector(".day").innerText = d++  ;
     tdList[i].classList.add("disabled");
   }
-//   if(k>1){
-//   preDate.innerText = Number(k)-1+"월";
-//   nextDate.innerText = Number(k)+1+"월";
-// } else if (k=12) {
+//   if(m>1){
+//   preDate.innerText = Number(m)-1+"월";
+//   nextDate.innerText = Number(m)+1+"월";
+// } else if (m=12) {
 //   nextDate.innerText = "2022년 1월";
-// } else if (k=1){
+// } else if (m=1){
 //   preDate.innerText = "2021년 12월";
 // }
-if( k=="1") {
-  preDate.innerText = (Number(y)-1)+"년 12월";
-} else {
-preDate.innerText = Number(y)+"년"+ (Number(k)-1)+"월";
-}
-if( k=="12" ){
-  nextDate.innerText = Number(y)+1+"년 1월"
-} else {
-nextDate.innerText =  Number(y)+"년" +(Number(k)+1)+"월";
-}
+// ///////////////////////////////////////////
+//  if else 문을 삼항연산자로 변환
+// if( m=="1") {
+//   preDate.innerText = (Number(y)-1)+"년 12월";
+// } else {
+// preDate.innerText = Number(y)+"년"+ (Number(m)-1)+"월";
+// }
+// if( m=="12" ){
+//   nextDate.innerText = Number(y)+1+"년 1월"
+// } else {
+// nextDate.innerText =  Number(y)+"년" +(Number(m)+1)+"월";
+// }
+ (m=="1") ? preDate.innerText = (Number(y)-1)+"년 12월" : preDate.innerText = Number(y)+"년"+ (Number(m)-1)+"월";
+ (m=="12") ? nextDate.innerText = Number(y)+1+"년 1월" : nextDate.innerText =  Number(y)+"년" +(Number(m)+1)+"월";
+ ////////////////////////////////////////////////////////
 toYear.value = y;
-toDateInput.value = k;
-console.log(k);
-console.log(y);
+toDateInput.value = m;
+
+console.log(m+"월");
+console.log(y+"년");
 };
 
 
-// let k = document.querySelector("#toDate input").value;
+// let m = document.querySelector("#toDate input").value;
 
 // preDate.addEventListener("click", function(){
-//   k = Number(k-1);
+//   m = Number(m-1);
 // });
 // nextDate.addEventListener("click", function(){
-//   k = Number(k+1);
+//   m = Number(m+1);
 // });
 
 
+const modal = document.querySelector('.modal');
+const btnOpenPopup = document.querySelector('.btn-open-popup');
 
+btnOpenPopup.addEventListener('click', () => {modla.style.display= 'block'})
 
 
 

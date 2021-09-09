@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>자바스크립트로 html 문서 조작</h1>
+    <ul id="testUl">
+      <li>1번목록</li>
+    </ul>
+    <hr>
+    <ul>
+      <li>목록에 새로운 리스트 추가 : <button type="button" onclick="insertList()">innerHTML</button></li>
+      <script>
+        function insertList(){
+          document.getElementById("testUl").innerHTML+="<li>2번 목록</li>";
+        }
+      </script>
+      <li>1번 목록 앞에 0번 추가 : <button type="button" onclick="insertList2()">innerHTML</button></li>
+      <script>
+        function insertList2(){
+          document.getElementById("testUl").innerHTML="<li>0번 목록</li>"+document.getElementById("testUl").innerHTML;
+        }
+      </script>
+    </ul>
+    <hr>
+    <ul id="testUl2">
+      <li>0목록</li>
+      <!-- 0.5목록 -->
+      <li>1목록</li>
+      <!-- 1.5목록 -->
+      <li>2목록</li>
+    </ul>
+    <hr>
+    <ul>
+      <li>0과 1 사이에 0.5 목록 추가 : <button type="button" onclick="insertList3()">0.5목록 추가</button></li>
+      <script>
+        function insertList3(){
+          let string_lis=document.getElementById("testUl2").innerHTML;
+          let array_li = string_lis.trim().split("\n");
+          array_li.splice(1,0,"<li>0.5목록</li>")
+          document.getElementById("testUl2").innerHTML=array_li.join("\n");
+        }
+      </script>
+      <li>1번 목록 삭제 : <button type="button" onclick="removeList()">1목록 삭제</button></li>
+      <script>
+        function removeList(){
+          let string_lis=document.getElementById("testUl2").innerHTML; // testUl2의 html값을 가져옴
+          let array_li = string_lis.trim().split("\n"); //해당값을 배열로 만듦.
+          array_li.splice(1,1); // 해당배열에서 1,1을 삭제
+          document.getElementById("testUl2").innerHTML=array_li.join("\n"); //testUl2에 
+        }
+      </script>
+    </ul>
+  </body>
+</html>
