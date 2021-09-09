@@ -89,9 +89,13 @@ printCalendar();
 
 
 function cPreDate(){
-  toDateInput.value = Number(toDateInput.value)%12-1;
-  preDate.innerText =  Number(toDateInput.value)%12-1+"월";
-  nextDate.innerText =  Number(toDateInput.value)%12+1+"월";
+  toDateInput.value = Number(toDateInput.value)-1;
+  // nextDate.innerText =  Number(toDateInput.value)+1+"월";
+  // if(toDateInput.value == "0"){
+  //   toYear.value = Number(toYear.value)-1;
+  // } else {
+  // preDate.innerText =  Number(toDateInput.value)-1+"월";
+  // }
 
 };
 
@@ -108,18 +112,29 @@ printCalendar();
 // console.log(nextDate.innerText.includes("12"));
 
 function cNextDate(){
-  toDateInput.value = Number(toDateInput.value)+1;
-  preDate.innerText =  Number(toDateInput.value)%12-1+"월"
-  nextDate.innerText =  Number(toDateInput.value)%12+1+"월";
 
+  toDateInput.value = Number(toDateInput.value)+1;
+//   preDate.innerText =  Number(toDateInput.value)-1+"월"
+//   if( toDateInput.value == "13") {
+//     nextDate.innerText ="1";
+//   } else {
+//   nextDate.innerText =  Number(toDateInput.value)+1+"월";
+// }
 };
 document.querySelector("#toDate input").addEventListener("change", printCalendar);
 
 
 function printCalendar(){
-let k = (document.querySelector("#toDate input").value)%12;
-let y = toYear.value;
-
+  let k = toDateInput.value;
+  let y = toYear.value;
+if(k=="13") {
+  k = "1";
+  y = Number(y)+1;
+}
+if(k=="0") {
+  k = "12";
+  y = Number(y)-1;
+}
   // k월의 마지막 일 구하기
   lastDay = new Date(Number(y),Number(k),0).getDate();
   // console.log(lastDay);
@@ -135,14 +150,17 @@ let y = toYear.value;
 
 
   lastMonthLastDay = new Date(Number(y),Number(k)-1,0).getDate();
+ // k-1달 표기
   for(i=firstDay-1; i>=0; i--){
     tdList[i].querySelector(".day").innerText= lastMonthLastDay--;
     tdList[i].classList.add("disabled");
   };
+ // 'k' 달 표기
   for( i=firstDay; i<lastDay+firstDay; i++) {
     tdList[i].querySelector(".day").innerText= d++;
     tdList[i].classList.remove("disabled");
   };
+  // k+1달 표기
     for( i=lastDay+firstDay,d=1; i<tdList.length;i++){
     tdList[i].querySelector(".day").innerText = d++  ;
     tdList[i].classList.add("disabled");
@@ -155,9 +173,20 @@ let y = toYear.value;
 // } else if (k=1){
 //   preDate.innerText = "2021년 12월";
 // }
-preDate.innerText =  Number(toDateInput.value)-1+"월"
-nextDate.innerText =  Number(toDateInput.value)+1+"월";
-
+if( k=="1") {
+  preDate.innerText = (Number(y)-1)+"년 12월";
+} else {
+preDate.innerText = Number(y)+"년"+ (Number(k)-1)+"월";
+}
+if( k=="12" ){
+  nextDate.innerText = Number(y)+1+"년 1월"
+} else {
+nextDate.innerText =  Number(y)+"년" +(Number(k)+1)+"월";
+}
+toYear.value = y;
+toDateInput.value = k;
+console.log(k);
+console.log(y);
 };
 
 
