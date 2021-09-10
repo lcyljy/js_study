@@ -71,10 +71,13 @@
         </ul>
       </article>
       <article>
-        <h2>0과 1사이에 li 노드를 추가하세요</h2>
+        <h2>0과 1사이에 li 노드를 추가하세요
+        <input type="text" onchange="answer0(event)" placeholder="0~.내용"></h2>
         <button type="button" onclick="document.getElementById('testA').after(aaa)">Id 지정</button>
         <button type="button" onclick="document.getElementById('test').getElementsByTagName('li')[1].before(bbb)">getElementsByTagName</button>
-        <button type="button" onclick="document.querySelector('#test li:nth-child(1)').after(li_node)">nth-child(1)</button>
+        <button type="button" onclick="document.querySelector('#test li:nth-child(2)').after(li_node)">nth-child(2)</button>
+        <h3>삭제할 인덱스 입력:
+        <input type="number" onblur="answer1(event)"></h3>
         <ul id="test">
           <li id="testA">0</li>
           <li>1</li>
@@ -86,6 +89,41 @@
           let bbb = document.createElement("li");
           bbb.prepend("test")
 
+        </script>
+        <script>
+          function answer0(e){
+            let inputValue=e.target.value; //this.value
+            // if (inputValue.include !== ".") {
+            //   inputValue = inputValue.split().splice(1,0,".");
+            // }
+            console.log(inputValue)
+            let inputValueArr=inputValue.split(".");
+            // console.log(inputValueArr);
+            let li_length= document.querySelectorAll("ul#test>li");
+            // console.log(li_length.length)
+            //
+            let li_node=document.createElement("li"); // li 태그인 노드 개체 생성
+            let createBtn=document.createElement("button");
+            createBtn.append("x");
+            li_node.style.color="red";
+
+if (inputValueArr[0] > li_length.length) {
+  inputValueArr[0] = li_length.length-1;
+}
+ if(inputValueArr.length==2){
+   li_node.innerHTML="<b>"+inputValueArr[1]+"</b>";
+   document.querySelectorAll("ul#test>li")[inputValueArr[0]].after(li_node);
+   document.querySelector("ul#test").append(createBtn);
+ } else if(inputValueArr.length==1){
+   li_node.innerHTML="<b>"+inputValueArr[0]+"</b>";
+   document.querySelector("ul#test").append(li_node);
+   document.querySelector("ul#test").append(createBtn);.;;;;
+ }
+
+          }
+function answer1(e){
+  document.querySelector(`ul#test>li:nth-child(${Number(e.target.value)+1})`).remove()
+}
         </script>
       </article>
     </main>

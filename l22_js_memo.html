@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>할 일 목록 메모장</title>
+  <link rel="stylesheet" href="../css/memo.css">
+  <script defer src="../js/memo.js" charset="utf-8"></script>
+</head>
+
+<body>
+  <main>
+    <h1>할 일 목록 메모장</h1>
+    <article id="memo">
+      <div class="memeo_container">
+        <h3 class="memoTitle">9월 10일 할일</h3>
+        <ul class="schedule">
+          <li>세수하기<button class="delete" type="button">x</button></li>
+          <li>도시락싸기<button class="delete" type="button">x</button></li>
+          <li>운전하기<button class="delete" type="button">x</button></li>
+          <li>출근 도장 찍기<button class="delete" type="button">x</button></li>
+          <li>청소<button class="delete" type="button">x</button></li>
+        </ul>
+        <form class="insert_schedule" name="inserSchedule">
+          <label>
+            <input type="number" value="0" name="index">시
+          </label>
+          <label>
+            <input type="number" value="0" name="index">분
+          </label>
+          <label>
+            <input type="text" name="" value="dd">
+          </label>
+          <label for="">
+            <button>스케줄 추가</button>
+          </label>
+        </form>
+      </div>
+    </article>
+  </main>
+</body>
+
+</html>
