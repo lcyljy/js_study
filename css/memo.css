@@ -1,3 +1,43 @@
-body{
+
+#memo .memoTitle{
+  text-align: center;
+}
+
+#memo{
+  border-radius: 30px;
   background-color: gray;
+  width: 300px;
+  height: 300px;
+  padding: 20px;
+}
+
+#memo ul.schedule{
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+#memo ul.schedule li .delete{
+  background-color: rgba(0,0,0,.3);
+  float: right;
+}
+
+#memo ul.schedule li .delete:hover{
+  background-color: rgba(0,0,0, .6);
+  box-shadow: 1px 1px black;
+  color: rgb(255,255,255);
+}
+
+#memo form.insert_schedule{
+  width: 200px;
+  margin: 20px auto 0;
+  text-align: center;
+  /* input요소는 inline-block속성으로 inline속성인 글자와 같이 정렬된다. */
+}
+
+.insert_schedule input[type=number]{
+
+  width: 40px;
+  border-radius: 20px;
+  text-align:center;
 }
