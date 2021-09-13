@@ -4,15 +4,15 @@
 <head>
   <meta charset="utf-8">
   <title>할 일 목록 메모장</title>
-  <link rel="stylesheet" href="../css/memo.css">
-  <script defer src="../js/memo.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="./css/memo.css">
+  <!-- <script defer src="./js/memo.js" charset="utf-8"></script> -->
 </head>
 
 <body>
   <main>
     <h1>할 일 목록 메모장</h1>
     <article id="memo">
-      <div class="memeo_container">
+      <div class="memo_container">
         <h3 class="memoTitle">9월 10일 할일</h3>
         <ul class="schedule">
           <li>세수하기<button class="delete" type="button">x</button></li>
@@ -32,7 +32,7 @@
             <input type="text" name="" value="dd">
           </label>
           <label for="">
-            <button id="adfaa">스케줄 추가</button>
+            <button type="button">스케줄 추가</button>
           </label>
         </form>
       </div>
@@ -44,5 +44,60 @@
     </article>
   </main>
 </body>
+<script>
+const insert_schedule = document.querySelector(".insert_schedule");
+console.log(insert_schedule[0].value); // 시간입력값. *60 해서 저장
+console.log(insert_schedule[1].value); // 분 입력값 . 그대로 저장. [0]+[1] = 시간*60+분 -> 데이터베이스에 저장. 후
+console.log(insert_schedule[2].value);
 
+const timeHour = Number(insert_schedule[0].value);
+const timeMin = Number(insert_schedule[1].value);
+const scheduleValue = insert_schedule[2].value;
+const todaySchedule = [{
+  "time": (timeHour * 60) + timeMin,
+  "value": scheduleValue,
+}] // 시간과 값... json형태로 만들기
+console.log(todaySchedule[0]); // 해당 위치값 확인
+console.log(todaySchedule[0].time); // 시간위치확인
+console.log(todaySchedule[0].value); // 스케줄 추가값 위치 확인
+
+console.log(timeHour, timeMin, scheduleValue);
+function DayObject(time,value){
+  this.time=time;
+  this.value=value;
+}
+const a=new DayObject(300,"eee");
+const d_09_10 = [a, new DayObject(400,"fff")];
+console.log(d_09_10);
+schedulePrint();
+
+function schedulePrint() {
+  let scheduleLiHtml = "";
+  for (i = 0; i < d_09_10.length; i++) {
+    scheduleLiHtml += `<li>`
+    scheduleLiHtml += `${d_09_10[i].time} : ${d_09_10[i].value}`
+    scheduleLiHtml += `<button class='delete' value='${i}' onclick='deleteSchedule(event)'>x</button>`
+    scheduleLiHtml += `</li>`;
+  }
+  const ulSchedule = document.querySelector("#memo ul.schedule");
+  ulSchedule.innerHTML = scheduleLiHtml;
+}
+
+console.log(schedulePrint);
+const insert_scheduleBtn = insert_schedule[3];
+insert_scheduleBtn.addEventListener("click", function() {
+  d_09_10.push(new DayObject(todaySchedule[0].time, todaySchedule[0].value));
+  schedulePrint();
+});
+
+console.log(document.querySelectorAll(".schedule li"));
+const dataBase_li = document.querySelectorAll(".dataBase li");
+console.log(dataBase_li);
+
+function deleteSchedule(e) {
+  let deleteIndex = Number(e.target.value);
+  d_09_10.splice(deleteIndex, 1);
+  schedulePrint();
+}
+</script>
 </html>
