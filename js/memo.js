@@ -52,7 +52,7 @@ schedulePrint();
 
 function schedulePrint() {
   let scheduleLiHtml = "";
-  for (i = 0; i < d_09_10.length; i++) {
+  for (let i = 0; i < d_09_10.length; i++) {
     scheduleLiHtml += `<li>`
     scheduleLiHtml += `${d_09_10[i].time} : ${d_09_10[i].value}`
     scheduleLiHtml += `<button class='delete' value='${i}' onclick='deleteSchedule(event)'>x</button>`
@@ -74,8 +74,13 @@ insert_scheduleBtn.addEventListener("click", function() {
 // console.log(e);
   // scheduleLiHtml+=`<li>${timeHour} : ${timeMin},${scheduleValue}</li>`
 });
-
-console.log(document.querySelectorAll(".schedule li"));
+const inputChange = document.querySelectorAll(".insert_schedule input");
+for(let i=0; i<inputChange.length; i++){
+inputChange[i].addEventListener("change", function(e){
+  {timeHour, timeMin, scheduleValue} = e.target.value;
+});
+}
+// console.log(document.querySelectorAll(".schedule li"));
 // console.log(document.querySelectorAll(".dataBase li"));
 // document.queryselectorAll(".dataBase_li") = [{timeHour}*60]
 const dataBase_li = document.querySelectorAll(".dataBase li");
