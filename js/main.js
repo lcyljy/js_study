@@ -249,7 +249,7 @@ const btnOpenPopup = document.querySelector('.btn-open-popup');
 btnOpenPopup.addEventListener('click', () => {modla.style.display= 'block'})
 
 
-
+console.log(document.querySelectorAll(".day")[12].this);
 
 // document.write(document.getElementById("todayCalendar") .);
 

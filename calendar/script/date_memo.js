@@ -19,6 +19,7 @@ const d_09=
       1328: "취침"
     }
 }
+console.log(d_09[13][330]);
 const d_0913={
   430:"기상",
   450:"에이콘아카데미 출근",
@@ -26,6 +27,7 @@ const d_0913={
   1170: "집 도착",
   1328: "취침"
 }
+
 // document.querySelector("#subCallendar .memoToday").innerText
 //d_0913[key]=value; //없는 key 추가
 //delete d_0913[1080]; //json 삭제법
@@ -34,7 +36,7 @@ const d_0913={
 printScheldule();
 function printScheldule(){
   let li_html="";
-  for(key in d_0913){
+  for(key in d_09[13]){
     li_html+="<li>"
     //li_html+=(Number.parseInt(key/60)<10)?"0"+Number.parseInt(key/60):Number.parseInt(key/60);
     //li_html+=":"+( (key%60<10)?"0"+key%60:key%60 );
@@ -43,7 +45,7 @@ function printScheldule(){
     li_html+=":"+(key%60+"").padStart(2,0);
     li_html+="</b>"
     li_html+="<span>"
-    li_html+=d_0913[key];
+    li_html+=d_09[13][key];
     li_html+="</span>"
     li_html+="<button class='delete' value='"+key+"' onclick='deleteScheldule(event)'>"
     li_html+="x"
@@ -65,7 +67,7 @@ document.forms.insertSchedule.regist.onclick=function(event){
   time_val_arr=arrValNum(time_val_arr);
   //9:10 => 9*60+10
   let regist_time= time_val_arr[0]*60+time_val_arr[1];
-  d_0913[regist_time]=text_val;
+  d_09[13][regist_time]=text_val;
   printScheldule();
 }
 //브라저우에 개체가 로드 될때 한번 재정의 한다.
@@ -74,7 +76,7 @@ document.forms.insertSchedule.regist.onclick=function(event){
 // });
 
 function deleteScheldule(event){
- delete d_0913[Number(event.target.value)];
+ delete d_09[13][Number(event.target.value)];
  printScheldule();
 }
 
