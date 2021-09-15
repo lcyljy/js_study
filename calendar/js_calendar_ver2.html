@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>js calendar</title>
+  <link rel="stylesheet" href="./css/l17_js_calendar_ver2.css">
+  <link rel="stylesheet" href="./css/memo2_ver2.css">
+  <script defer src="./script/date_memo_ver2.js" charset="utf-8"></script>
+    <script defer type="text/javascript" src="./script/calendar_ver2.js"></script>
+  <!-- <link rel="stylesheet" href="WebContents/js/bootstrap.css"> -->
+</head>
+
+<body>
+    <h1 id="mainTitle">(일정 등록되는)달력 만들기</h1>
+  <div id="allCalendar">
+    <h2>
+      <div>
+        <button id="preDate" type="button">월</button>
+        <input type="number" id="toYear"></input>년
+        <span id="toDate"> <input type="number" value="">월</span>
+        <button id="nextDate" type="button">월</button>
+      </div>
+    </h2>
+    <!-- (thead>tr>(th{일}+th{월}+th{화}+th{수}+th{목}+th{금}+th{토}))+tbody>(tr>td{$$}*7)*6 -->
+    <!-- table#calendarTable>thead>tr>(th*7)))+(tbody>(tr>td(div.day_container>h5.day+ul.schedule>li*5)*7)*6) -->
+    <!-- table#calendarTable>(thead>tr>(th*7))+(tbody>(tr>td(div.day_container>h5.day+ul.schedule>li*5)*7)*6) -->
+    <p id=todayCalendar></p>
+    <table id="calendarTable">
+      <thead>
+        <tr>
+          <th>일</th>
+          <th>월</th>
+          <th>화</th>
+          <th>수</th>
+          <th>목</th>
+          <th>금</th>
+          <th>토</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+          <td>
+            <div class="day_container">
+              <h5 class="day"></h5>
+              <ul class="schedule">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="modal">
+      <div class="modal_body">Modal</div>
+    </div>
+
+  </div>
+  <div id=subCalendar>
+    <h1>할 일 목록 메모장</h1>
+    <article id="memo">
+      <div class="container">
+        <h3 class="title">9월 <span class="memoToday">13</span>일 할 일</h3>
+        <ul class="schedule">
+          <li>9:00 운전하기.</li>
+          <li>10:00 세수하기
+            <button value="0" class="delete" type="button">X</button>
+          </li>
+          <li>11:00 도시락싸기
+            <button value='' class="delete" type="button">X</button>
+          </li>
+          <li>11:10운전하기
+            <button value='' class="delete" type="button">X</button>
+          </li>
+        </ul>
+      </div>
+      <form class="insert_schedule" name="insertSchedule">
+        <label>
+          <input type="time" name="registTime" value="09:00">
+        </label>
+        <label>
+          <input type="text" name="registText" value="일어나기">
+        </label>
+        <button type="button" name="regist">스케줄추가</button>
+      </form>
+    </article>
+    <button class="saveBtn" type="button">저장</button>
+    </main>
+  </div>
+  <!-- <button type="button" class="btn-open-popup">Modal 띄우기</button> -->
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/resource/js/bootstrap.js"></script>
+<script type="text/javascript" src="/WebContents/js/bootstrap.js"></script> -->
+
+</body>
+
+</html>

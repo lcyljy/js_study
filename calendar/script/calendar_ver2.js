@@ -134,8 +134,10 @@ saveBtn.addEventListener("click", function () {
   console.log(dayLi[0]);
   for (i = 0; i < dayLi.length; i++) {
     document.querySelectorAll(".m9_day13 li")[i].innerHTML = "";
-    dayLi[i].querySelector('b').innerHTML + dayLi[i].querySelector('span').innerHTML;
+    document.querySelectorAll(".m9_day13 li")[i].innerHTML =
+      dayLi[i].querySelector('b').innerHTML + dayLi[i].querySelector('span').innerHTML;
   }
 });
 // console.log(dayLi[i].innerHTML);
 // console.log(dayLi[i].querySelector(`b`),dayLi[i].querySelector(`span`));
+
